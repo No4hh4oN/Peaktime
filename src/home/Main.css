@@ -1,0 +1,63 @@
+.MainScreen {
+    position: relative;
+    z-index: 0;
+}
+
+.Always {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    background: linear-gradient(to bottom, #010207 20%, #00386E 40%, #6697BC 60%, #D9D2BE 80%, #F8974C 100%);
+}
+
+.MainScreen-Logo {
+    display: flex;
+    justify-self: center;
+}
+
+
+/*pc*/
+@media (min-width: 768px),
+(hover: hover) and (pointer: fine) {
+    @media (min-width: 1301px) {
+        .Always {
+            width: 393px;
+        }
+
+        .MainScreen {
+            justify-content: space-between !important;
+        }
+    }
+}
+
+/*태블릿*/
+@media (min-width: 768px),
+(hover: hover) and (pointer: fine) {
+    .Always {
+        width: 393px;
+    }
+
+    .MainScreen {
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 100px 86px;
+        background-color: blueviolet;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+/*모바일, 태블릿*/
+@media (max-width: 1300px) {
+
+    .ResponsiveScreen1,
+    .ResponsiveScreen2 {
+        display: none;
+    }
+}
