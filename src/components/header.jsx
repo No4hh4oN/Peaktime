@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../assets/style/header.css';
+import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
 import closeSideTab from '/icons/closeSideTab.png';
 import spark from '/icons/spark-solid.png';
