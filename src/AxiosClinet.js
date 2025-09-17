@@ -1,4 +1,3 @@
-// AxiosClient.js
 import axios from "axios";
 
 const AxiosClient = axios.create({
@@ -9,12 +8,20 @@ const AxiosClient = axios.create({
   },
 });
 
-// 요청 인터셉터 (토큰 자동 주입)
+// 요청 인터셉터
 AxiosClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (config.auth) {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      config.headers = config.headers || {};
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
   }
+
+  delete config.auth;
+  delete config.withAuth;
+  delete config.requiresAuth;
+
   return config;
 });
 

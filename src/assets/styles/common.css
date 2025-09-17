@@ -1,0 +1,71 @@
+/* 기본 모바일 */
+.ViewBox {
+    position: relative;
+    z-index: 0;
+}
+
+.Always {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    background-image: url('/images/BackgroundImg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.ResponsiveScreen1,
+.ResponsiveScreen2 {
+    display: none;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+    .Always {
+        width: 360px;
+        height: calc(100dvh - 200px);
+        border: 5px solid #020202;
+        border-radius: 20px;
+        overflow:scroll;
+        padding: 50px 0;
+    }
+
+    .Always::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ViewBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: calc(100vw - 172px);
+        height: calc(100dvh - 200px);
+        padding: 100px 86px;
+        background-color: blueviolet;
+        flex-direction: row;
+    }
+}
+
+/* PC 이상 */
+@media (min-width: 1301px) {
+    .Always {
+        width: 393px;
+    }
+
+    .MainScreen {
+        justify-content: space-between;
+    }
+
+
+    .ResponsiveScreen1 {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .ResponsiveScreen2 {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

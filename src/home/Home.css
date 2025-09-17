@@ -1,0 +1,86 @@
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomeContents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home_SYU {
+    color: #FFFFFF;
+    font-family: 'DnfBitbeatV2';
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 34px;
+    text-shadow: 1px 1px 4px #2C212140;
+}
+
+.Home_Title {
+    margin-top: 14px;
+    color: #FFFFFF;
+    font-family: 'DnfBitbeatV2';
+    font-size: 16px;
+    text-shadow: 1px 1px 4px #2C212140;
+}
+
+.Home_Co {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DnfBitbeatV2';
+    font-size: 11px;
+    color: #FFFAFA;
+}
+
+#synergy,
+#likelion13th {
+    text-align: center;
+    text-shadow: 1px 1px 4px #2C212140;
+}
+
+.authButtons {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.authButton {
+    width: 212px;
+    height: 43px;
+    border-radius: 100px;
+    font-family: 'DnfBitbeatV2';
+    font-size: 20px;
+}
+
+#login {
+    border: 2px solid #8FC7FA;
+    background-color: #FFFAFA;
+    color: #8FC7FA;
+}
+
+#join {
+    background-color: #8FC7FA;
+    color: #FFFAFA;
+    border: none;
+}
+
+#noAuth {
+    font-family: 'Pretendard-Regular';
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: #9FA4A9;
+}
+
+#festaLogo {
+    margin-top: 67px;
+}

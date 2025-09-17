@@ -243,7 +243,7 @@ export default function Test() {
                 {userInfo && (
                     <div className="UserInfoBox">
                         <h3>내 정보</h3>
-                        <p>아이디: {userInfo.userId}</p>
+                        <p>아이디: {userInfo.id}</p>
                         <p>이름: {userInfo.name}</p>
                         <p>이메일: {userInfo.email}</p>
                         <p>학번: {userInfo.studentId}</p>

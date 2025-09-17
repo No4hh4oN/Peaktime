@@ -35,7 +35,7 @@ export async function joinUser({ userId, email, password, name, studentId, depar
 
 // 사용자 정보 불러오기
 export async function userMe() {
-    return AxiosClient.get("/users/me");
+    return AxiosClient.get("/users/me", { auth: true });
 }
 
 

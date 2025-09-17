@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
-import closeSideTab from '/icons/closeSideTab.png';
-import spark from '/icons/spark-solid.png';
+import closeSideTab from '/icons/close.png';
 
 export default function Header() {
     // 메뉴 오픈 상태 관리
@@ -28,7 +27,6 @@ export default function Header() {
             {isOpen && <div className="overlay" onClick={toggleMenu} />}
             <div className={`MenuBox ${isOpen ? 'active' : ''}`}>
                 <div className=''>
-                    <img src={spark} alt="spark" />
                     <img src={closeSideTab} alt="" onClick={toggleMenu}/>
                 </div>
                 <div>

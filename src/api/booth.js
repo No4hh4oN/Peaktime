@@ -26,3 +26,25 @@ export async function getBookmarkCountByBooth(boothId) {
     params: { boothId },
   });
 }
+
+// 사용자 북마크 여부 확인
+export async function getIsBookmark(boothId) {
+  return AxiosClient.get(`/booth-bookmarks/my/${encodeURIComponent(boothId)}`, {
+    auth: true
+  });
+}
+
+// 북마크 하기
+export async function doBookmark(boothId) {
+  return AxiosClient.post(`/booth-bookmarks`,
+    { boothId },
+    { auth: true },
+  );
+}
+
+// 북마크 취소
+export async function cancelBookmark(boothId) {
+  return AxiosClient.delete(`/booth-bookmarks/${encodeURIComponent(boothId)}`, {
+    auth: true,
+  });
+}

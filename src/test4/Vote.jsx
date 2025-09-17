@@ -26,7 +26,7 @@ export default function Vote() {
         {votes.map((vote) => (
           <li
             key={vote.voteId}
-            onClick={() => navigate(`/votes/${vote.voteId}`)}
+            onClick={() => navigate(`/Vote/${vote.voteId}`)}
           >
             <h3>{vote.voteName}</h3>
             <p>{vote.voteDescription}</p>

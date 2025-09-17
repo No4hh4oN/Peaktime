@@ -55,7 +55,6 @@
 
 /*모바일, 태블릿*/
 @media (max-width: 1300px) {
-
     .ResponsiveScreen1,
     .ResponsiveScreen2 {
         display: none;

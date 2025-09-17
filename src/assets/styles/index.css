@@ -12,10 +12,35 @@ body {
   min-width: 100vw;
   min-height: 100dvh;
   margin: 0px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   text-size-adjust: 100%;
 }
 
 body {
   display: block;
+}
+
+@font-face {
+    font-family: 'DnfBitbeatV2';
+    src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf')format('opentype');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('../fonts/Pretendard-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('../fonts/Pretendard-Medium.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('../fonts/Pretendard-SemiBold.ttf') format('truetype');
+  font-style: normal;
 }
