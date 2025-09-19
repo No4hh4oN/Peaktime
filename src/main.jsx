@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './assets/styles/common.css';
 import './assets/styles/index.css'
-import Main from './main/Main'
+import MainPage from './mainpage/JsxFolder/MainPage'
 import Auth from './test1/Test'
 import Booth from './test2/Booth';
 import BoothDetail from "./test2/BoothDetail";
@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Main" element={<Main />} />
+        <Route path="/MainPage" element={<MainPage />} />
         <Route path="/Auth" element={<Auth />} />
         <Route path="/Booth" element={<Booth />} />
         <Route path="/Booth/:id" element={<BoothDetail />} />

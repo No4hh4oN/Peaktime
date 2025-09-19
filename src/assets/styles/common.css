@@ -7,12 +7,29 @@
 .Always {
     position: relative;
     width: 100vw;
-    height: 100dvh;
+    height: 816px;
     background-image: url('/images/BackgroundImg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
+
+
+
+
+.SubMain {
+    position: relative;
+    width: 100vw;
+    height: 2750px;
+    background-image: url('/images/MainSub.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
 
 
 .ResponsiveScreen1,
@@ -28,12 +45,24 @@
         border: 5px solid #020202;
         border-radius: 20px;
         overflow:scroll;
-        padding: 50px 0;
+        /* padding: 50px 0; */
     }
 
     .Always::-webkit-scrollbar {
         display: none;
     }
+/* 
+    .SubMain {
+        width: 360px;
+        height: calc(100dvh - 200px);
+        border: 5px solid #020202;
+        border-radius: 20px;
+        overflow:scroll;
+    } */
+/* 
+    .SubMain::-webkit-scrollbar {
+        display: none;
+    } */
 
     .ViewBox {
         display: flex;
@@ -51,6 +80,9 @@
 /* PC 이상 */
 @media (min-width: 1301px) {
     .Always {
+        width: 393px;
+    }
+    .SubMain {
         width: 393px;
     }
 

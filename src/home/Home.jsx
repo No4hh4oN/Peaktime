@@ -41,7 +41,7 @@ export default function Home() {
                     <div className='authButtons'>
                         <button id='login' className='authButton' onClick={() => setLoginOpen(true)}>로그인</button>
                         <button id='join' className='authButton' onClick={() => setJoinOpen(true)}>계정 만들기</button>
-                        <button id='noAuth' onClick={() => navigator('/Main')}>비회원 입장하기</button>
+                        <button id='noAuth' onClick={() => navigator('/MainPage')}>비회원 입장하기</button>
                     </div>
                     <img id='festaLogo' src={festaLogo} alt="PeakTime" />
                 </div>
