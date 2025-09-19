@@ -1,0 +1,17 @@
+.TestPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.JoinBox {
+    width: 300px;
+    background-color: #4cc415;
+}
+
+.LoginBox {
+    width: 300px;
+    background-color: #89be70;
+}

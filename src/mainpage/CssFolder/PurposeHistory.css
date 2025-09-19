@@ -1,0 +1,66 @@
+.PurHis{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1200px;
+    justify-content: center;
+}
+
+.Purpose-Top span{
+    font-family: 'DnfBitbeatV2';
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #4A9BF6;
+}
+.History-Top span{
+    color: #FFA14F;
+    font-family: 'DnfBitbeatV2';
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.StarImg{
+    width: 125px;
+    height: 29px;
+    margin: 65px 0px 40px 0px;
+}
+
+.Purpose-Top img{
+    width: 49px;
+    height: 61px;
+}
+.History-Top img{
+    width: 49px;
+    height: 61px;
+}
+
+.Purpose-Top{
+    margin-top: 30px;
+}
+
+.Purpose-Top,.History-Top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.Purpose-Contents,.History-Contents{
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #464C52;
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+}
+.Purpose-Contents span{
+    color: #FFA14F;
+}
