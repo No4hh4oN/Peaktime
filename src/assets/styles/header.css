@@ -74,7 +74,7 @@
     pointer-events: none;
     transition: width 0.5s ease, opacity 0.5s ease;
     z-index: 1100;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .MenuBox.active {
