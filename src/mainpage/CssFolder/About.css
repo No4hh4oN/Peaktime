@@ -1,0 +1,265 @@
+.About{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1120px;
+    margin-top: 10px;
+    /* justify-content: center; */
+}
+
+.sparkle1{
+    width: 88px;
+    height: 63px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+.sparkle2{
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 0;
+    top: 290px;
+}
+.About-Char-Img img{
+    width: 92px;
+    height: 115px;
+}
+
+
+.About-Box{
+    border: 5px solid #243F73;
+    width: 312px;
+    height: 417px;
+    position: relative;
+    z-index: 0;
+}
+
+.About-Top span{
+    color: #FFFFFF;
+    font-family: 'DnfBitbeatV2';
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 400;
+    margin-right: 40px;
+    margin-left: 90px;
+}
+.About-Top{
+    height: 61px;
+    background-color: #9DAFD1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.About-Top img{
+    width: 40px;
+    height: 40px;
+}
+
+.About-Member{
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #133162;
+    gap: 10px;
+    margin-top: 25px;
+}
+.About-Member img{
+    width: 14px;
+    height: 14px;
+}
+
+.About-Contents{
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #848484;
+    margin-top: 30px;
+}
+
+.About-Char-Img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 180px;
+    z-index: 1;
+    position: absolute;
+    left: 50%; 
+    top: 340px; 
+    transform: translate(-50%);
+}
+
+.Member-Info{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 110px;
+}
+
+.LikeLionInfoBox {
+  width: 380px;
+  height: 149px;
+  display: block;      
+}
+
+.LikeLion-Info,.SYU-Info {
+  position: relative;   
+  display: inline-block;
+}
+
+
+.LikeLionLogo{
+    width: 72px;
+    height: 72px;
+}
+
+.SYUInfoBox{
+    width: 380px;
+    height: 225px;
+    display: block;    
+}
+.SYULogo{
+    width: 72px;
+    height: 72px;
+}
+
+.LikeLion-absolute {
+  position: absolute;
+  top: 0;             
+  left: 0;          
+  width: 100%;
+  height: 100%;
+  transform: translate(40px, 7px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;          
+}
+.LikeLion-title {
+  color: #6266A6;
+  font-family: 'DnfBitbeatV2';
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.Lion-Info-contents {
+  font-family: 'Pretendard-Medium';
+  font-size: 14px;
+  line-height: 18px;
+  color: #1B1D1F;
+  margin: 0 0 15px 0;
+  text-align: center;
+  transform: translate(0px,-14px);
+}
+
+.go-lion-homepage {
+  display: flex;
+  align-items: center;
+  transform: translate(70px,-23px);
+}
+.go-lion-homepage button {
+  font-family: 'Pretendard-SemiBold';
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #6266A6;
+  border: none;
+  border-radius: 67px;
+  width: 188px;
+  height: 42px;
+  cursor: pointer;
+}
+
+.go-lion-homepage img{
+    width: 55px;
+    height: 53px;
+}
+
+
+.SYU-absolute{
+  position: absolute;
+  top: 0;             
+  right: 0;          
+  width: 100%;
+  height: 100%;
+  transform: translate(120px, -11px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;  
+}
+
+.SYU-title{
+    color: #D08025;
+    font-family: 'DnfBitbeatV2';
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.SYU-Info-contents {
+  font-family: 'Pretendard-Medium';
+  font-size: 14px;
+  line-height: 18px;
+  color: #1B1D1F;
+  margin: 0 0 15px 0;
+  text-align: center;
+  transform: translate(-135px,-6px);
+}
+
+.go-syu-homepage button{
+font-family: 'Pretendard-SemiBold';
+font-weight: 600;
+font-size: 14px;
+text-align: center;
+color: #FFFFFF;
+background-color: #FFC47F;
+border: none;
+outline: none;
+width: 177px;
+height: 42px;
+border-radius: 67px;
+}
+
+.go-syu-homepage{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    transform: translate(-80px, -16px);
+}
+
+.go-syu-homepage img{
+    width: 44px;
+    height: 57px;
+}
+
+.LikeLion-Top {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;           
+  margin-bottom: 10px;
+}
+.SYU-Top{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.heartImg{
+    width: 114px;
+    height: 28px;
+    margin: 65px 0 40px 0;
+}

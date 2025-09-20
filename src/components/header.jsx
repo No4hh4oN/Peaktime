@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
 import closeSideTab from '/icons/close.png';
+import headerLogo from '/images/festaLogo.png'
 
 export default function Header() {
     // 메뉴 오픈 상태 관리
@@ -12,6 +13,16 @@ export default function Header() {
         setIsOpen(prev => !prev);
     }
 
+    useEffect(() => {
+        const always = document.querySelector('.Always');
+        if (!always) return;
+        if (isOpen) {
+            always.classList.add('no-scroll');
+        } else {
+            always.classList.remove('no-scroll');
+        }
+    }, [isOpen]);
+
     return (
         <div className="Header">
             <div className={`HeaderBox ${isOpen ? 'menu-open' : ''}`}>
@@ -21,12 +32,14 @@ export default function Header() {
                     className="SideTabIcon"
                     onClick={toggleMenu}
                 />
-                <div className=''></div>
+                <img src={headerLogo} alt="festaLogo" className='HeaderLogo' />
             </div>
-            
+
+
             {isOpen && <div className="overlay" onClick={toggleMenu} />}
             <div className={`MenuBox ${isOpen ? 'active' : ''}`}>
-                <div className=''>
+                <div className='MenuBox-Imgs'>
+                    <img src={headerLogo} alt="festaLogo" />
                     <img src={closeSideTab} alt="" onClick={toggleMenu}/>
                 </div>
                 <div>

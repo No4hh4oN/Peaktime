@@ -1,0 +1,39 @@
+.Sponsor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    background-color: transparent;
+}
+.Sponsor-title{
+    color: #4A9BF6;
+    font-family: 'DnfBitbeatV2';
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.sponsorImg{
+    width: 172px;
+    height: 172px;
+}
+.Sponsor-Img{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.Sponsor-set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #002956;
+    font-family: 'DnfBitbeatV2';
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+
+.Sponsor-set span{
+    position: absolute;
+    bottom: 8px;
+}
