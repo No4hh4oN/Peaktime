@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
 import closeSideTab from '/icons/close.png';
@@ -12,6 +12,16 @@ export default function Header() {
     const toggleMenu = () => {
         setIsOpen(prev => !prev);
     }
+
+    useEffect(() => {
+        const always = document.querySelector('.Always');
+        if (!always) return;
+        if (isOpen) {
+            always.classList.add('no-scroll');
+        } else {
+            always.classList.remove('no-scroll');
+        }
+    }, [isOpen]);
 
     return (
         <div className="Header">

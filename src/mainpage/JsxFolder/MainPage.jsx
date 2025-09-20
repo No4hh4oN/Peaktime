@@ -15,7 +15,7 @@ export default function Main() {
             <div className="ResponsiveScreen1">
                 PeakTime
             </div>
-            <div className="Always">
+            <div id='mainAlways' className="Always">
                 <Header />
                 <div className='MainPage'>
                     <div className='MainPage-Top'>
