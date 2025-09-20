@@ -29,6 +29,8 @@ export default function LoginModal({ isOpen, onRequestClose }) {
             localStorage.setItem("userRole", res.role);
             setLoginForm((f) => ({ identifier: "", password: "" }));
             alert("로그인 성공!");
+            onRequestClose();
+            navigator('/MainPage');
         } catch (err) {
             setErrorOpen(true);
         }
