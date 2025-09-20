@@ -308,9 +308,10 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                         onChange={handleChange}
                         placeholder="비밀번호 확인"
                     />
-                    {confirmMessage ? (
+                    {confirmMessage === true && (
                         <span id="ok" className="systemMessage">*비밀번호가 일치합니다.</span>
-                    ) : (
+                    )}
+                    {confirmMessage === false && (
                         <span id="error" className="systemMessage">*비밀번호가 일치하지 않습니다.</span>
                     )}
                 </div>
