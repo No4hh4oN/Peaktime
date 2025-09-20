@@ -7,7 +7,7 @@
 .Always {
     position: relative;
     width: 100vw;
-    height: 816px;
+    height: 100dvh;
     background-image: url('/images/BackgroundImg.png');
     background-size: cover;
     background-position: center;
@@ -15,54 +15,39 @@
     overflow-x: hidden;
 }
 
-
-
+.Always.no-scroll {
+  overflow: hidden;
+}
 
 .SubMain {
     position: relative;
-    width: 100vw;
-    height: 2750px;
     background-image: url('/images/MainSub.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
 }
-
-
-
-
 
 .ResponsiveScreen1,
 .ResponsiveScreen2 {
     display: none;
 }
 
+
 /* 태블릿 이상 */
 @media (min-width: 768px) {
     .Always {
         width: 360px;
-        height: calc(100dvh - 200px);
+        height: 800px;
         border: 5px solid #020202;
         border-radius: 20px;
-        overflow:scroll;
-        /* padding: 50px 0; */
+        overflow-y: auto;
     }
 
     .Always::-webkit-scrollbar {
         display: none;
     }
-/* 
-    .SubMain {
-        width: 360px;
-        height: calc(100dvh - 200px);
-        border: 5px solid #020202;
-        border-radius: 20px;
-        overflow:scroll;
-    } */
-/* 
-    .SubMain::-webkit-scrollbar {
-        display: none;
-    } */
+    
 
     .ViewBox {
         display: flex;
