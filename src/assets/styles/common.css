@@ -28,7 +28,6 @@
         border: 5px solid #020202;
         border-radius: 20px;
         overflow:scroll;
-        padding: 50px 0;
     }
 
     .Always::-webkit-scrollbar {
