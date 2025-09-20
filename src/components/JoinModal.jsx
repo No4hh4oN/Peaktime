@@ -104,7 +104,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     // 실시간 비밀번호 형식 체크
     useEffect(() => {
         if (!form.password) {
-            setPasswordMessage("");
+            setPasswordMessage(null);
         } else if (!validatePassword(form.password)) {
             setPasswordMessage(false);
         } else {
@@ -115,7 +115,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     // 비밀번호 확인
     useEffect(() => {
         if (!form.confirmPassword) {
-            setConfirmMessage("");
+            setConfirmMessage(null);
         } else if (form.confirmPassword !== form.password) {
             setConfirmMessage(false);
         } else {
@@ -292,9 +292,10 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                         onChange={handleChange}
                         placeholder="비밀번호"
                     />
-                    {passwordMessage ? (
+                    {passwordMessage === true && (
                         <span id="ok" className="systemMessage">*가입 가능한 비밀번호 입니다.</span>
-                    ) : (
+                    )}
+                    {passwordMessage === false && (
                         <span id="error" className="systemMessage">*비밀번호 조건을 확인해주세요.</span>
                     )}
                 </div>

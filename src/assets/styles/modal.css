@@ -234,7 +234,7 @@
     border-bottom-right-radius: 10px;
     position: absolute;
     top: 45px;
-    width: calc(100% - 32px);
+    width: calc(100% - 33px);
     border-top: none !important;
     border: 1.5px solid #002956;
     max-height: 180px;
