@@ -52,12 +52,12 @@
     .ViewBox {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         width: calc(100vw - 172px);
         height: calc(100dvh - 200px);
         padding: 100px 86px;
-        background-color: blueviolet;
+        background: linear-gradient(to bottom, #A8D5FF 0%, #FFF9F9 100%);
         flex-direction: row;
     }
 }
