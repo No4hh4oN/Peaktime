@@ -1,0 +1,22 @@
+#boothAlways {
+    background-image: none;
+    background-color: #F7F7F7;
+}
+
+.Booth-Container {
+    width: 100%;
+    height: calc(100dvh - 107px);
+    overflow: hidden;
+}
+
+.map-wrap {
+    position: relative;
+    width: 200%;
+    height: 100dvh;
+}
+
+.campus-svg {
+  display: block;
+  pointer-events: auto;
+  width: 350px;
+}
