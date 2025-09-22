@@ -5,6 +5,7 @@ import PurposeHistory from "./PurposeHistory"
 import About from "./About"
 import Footer from '/src/components/footer.jsx'
 import Sponsor from "./Sponsor"
+import MainFooter from "./MainFooter"
 import MainImg from "/images/MainImg.png";
 import festaTitle from "/images/festaTitle.png";
 import cross from "/icons/Cross.png";
@@ -53,6 +54,7 @@ export default function Main() {
                     <Sponsor/>
                     <Footer/>
                 </div>
+                <MainFooter/>
             </div>
             <div className="ResponsiveScreen2">
                 LikeLion

@@ -1,0 +1,21 @@
+.MainFooter{
+    width: 100%;
+    height: 140px;
+    background-color: #E9EBED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MainFooter-Member{
+    color: #9FA4A9;
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    line-height: 21.5px;
+}
+
+.MainFooter-Member span{
+    font-size: 13px;
+    color: #969ba0;
+}

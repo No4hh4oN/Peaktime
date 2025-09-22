@@ -3,8 +3,10 @@ import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
 import closeSideTab from '/icons/close.png';
 import headerLogo from '/images/festaLogo.png'
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+    const navigator = useNavigate();
     // 메뉴 오픈 상태 관리
     const [isOpen, setIsOpen] = useState(false);
 
@@ -45,8 +47,8 @@ export default function Header() {
                 <div>
                     <div className='MenuBox-SubMenu'>
                         <span>메인페이지</span>
-                        <span>타임테이블</span>
-                        <span>라인업</span>
+                        <span onClick={() => navigator('/TimeTable')}>타임테이블</span>
+                        <span onClick={() => navigator('/LineUp')}>라인업</span>
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>공지사항</span>

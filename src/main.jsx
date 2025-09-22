@@ -6,6 +6,8 @@ import './assets/styles/common.css';
 import './assets/styles/index.css'
 import MainPage from './mainpage/JsxFolder/MainPage'
 import Home from './home/Home';
+import TimeTable from './mainpage/JsxFolder/TimeTable'
+import LineUp from './mainpage/JsxFolder/LineUp'
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -36,6 +38,32 @@ function AnimatedRoutes() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <MainPage />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/TimeTable" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <TimeTable />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/LineUp" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              <LineUp />
             </motion.div>
           } 
         />

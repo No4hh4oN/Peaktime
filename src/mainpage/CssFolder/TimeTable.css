@@ -1,0 +1,154 @@
+.TimeTable {
+    position: relative;
+    height: calc(100dvh - 107px);
+    min-height: 1150px;
+    background-image: url('/images/BackgroundImg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.TimeTable-Box{
+    width: 326px;
+    height: 970px;
+    border: 5px solid #243F73;
+    position: relative;
+    margin-top: 50px;
+}
+
+.TimefestaTitle{
+    width: 107px;
+    height: 45px;
+    transform: rotate(-5.05deg);
+    transform-origin: center;
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+.sparkle3{
+    width: 68px;
+    height: 82px;
+    position: absolute;
+    top: 25px;
+    left: -30px;
+
+}
+
+.TimeTable-Top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 0px;
+    background-color: #9DAFD1;
+    justify-content: center;
+    gap: 30px;
+}
+
+.TimeTable-Top img{
+    width: 35px;
+    height: 35px;
+}
+.TimeTable-Top span{
+    font-family: 'DnfBitbeatV2';
+    font-size: 24px;
+    text-align: center;
+    font-weight: 400;
+    color: #fff;
+    margin-left: 60px;
+}
+
+.TimeTable-List{
+    background-color: #ffffff;
+    height: 900px;
+}
+.tt-list { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.tt-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 12.5px 0;
+    border-bottom: 1px solid #EAEAEA;
+    width: 80%;        
+    margin: 0 auto;   
+}
+
+.tt-row:last-child { border-bottom: none; }
+
+.tt-time, .tt-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 14px;
+    color: #464C52;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.tt-row:not(:last-child) {
+    padding-left:10px;     
+    text-align: left;
+}
+
+.tt-row:last-child {
+    justify-content: center;     
+}
+.tt-row:first-child .tt-time,
+.tt-row:first-child .tt-title {
+    padding-top: 5px;
+}
+.tt-row:last-child .tt-title{
+    margin-left: -30px;
+    margin-right: 25px;
+}
+
+.tt-title.accent {
+    color: #FF8A00;
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+}
+
+
+
+.sparkle4{
+    width: 76px;
+    height: 90px;
+    position: absolute;
+    top: 260px;
+    right: -20px;
+}
+
+.sparkle5{
+    width: 65px;
+    height: 89px;
+    position: absolute;
+    bottom: 280px;
+    left: -20px;
+}
+
+.TimeCharactor-Box{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 190px;
+    left: -25px;
+    bottom: -43px;
+}
+
+.char1,.char2{
+    width: 92px;
+    height: 115px;
+}
