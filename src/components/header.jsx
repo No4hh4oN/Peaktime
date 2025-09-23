@@ -66,9 +66,8 @@ export default function Header() {
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>마이페이지</span>
-                        <span>나의 정보</span>
-                        <span>도장판</span>
-                        <span>저장한 부스</span>
+                        <span onClick={() => navigator('/MyPage')}>나의 정보</span>
+                        <span onClick={() => navigator('/MyPage', { state: { tab: 'stamp' } })}>도장판</span>
                     </div>
                 </div>
             </div>
