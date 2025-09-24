@@ -93,6 +93,7 @@
     flex-direction: column;
     gap: 11px;
     margin-bottom: 21px;
+    white-space: nowrap;
 }
 
 .MenuBox-SubMenu span:nth-child(1) {
@@ -111,6 +112,9 @@
     color: #9FA4A9;
 }
 
+.MenuBox-SubMenu span {
+    cursor: pointer;
+}
 .overlay {
     position: fixed;
     top: 0;
