@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Header from '../components/header';
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import '../assets/styles/common.css';
 import "../mypage/MyPage.css";
 import Modal from "react-modal";
@@ -11,6 +12,10 @@ import emptyStamp from '/images/emptyStamp.png';
 import fillStamp from '/images/fillStamp.png';
 import treasureModal from '/images/treasureModal.png';
 import close from '/icons/close.png';
+import saved from '/icons/saved.png';
+import delbookmark from '/icons/delbookmark.png';
+
+import BoothLogo from '/images/BoothLogo.png';
 
 
 import AxiosClient from "../AxiosClinet";
@@ -18,21 +23,87 @@ import AxiosClient from "../AxiosClinet";
 Modal.setAppElement("#root");
 
 export default function MyPage() {
-
-    const [activeTab, setActiveTab] = useState("booth");
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState(() => {
+        return location.state?.tab || "booth";
+    });
 
     const [refreshKey, setRefreshKey] = useState(0); // 같은 탭 눌렀을 때도 렌더링
-    const [savedBooths, setSavedBooths] = useState([]); 
     const [userName, setUserName] = useState("");
     const [department, setDepartment] = useState("");
     const [myStamps, setMyStamps] = useState([]); // 스탬프 저장
-
+    const [allBooths, setAllBooths] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const UserNickname = localStorage.getItem("nickname");
+
+    const [savedBoothIds, setSavedBoothIds] = useState([]); 
+    const [savedBoothDetails, setSavedBoothDetails] = useState([]);
+
+    // 북마크 부스 목록 가져오기
+    useEffect(() => {
+        const fetchSavedBooths = async () => {
+            try {
+                const response = await AxiosClient.get("/booth-bookmarks/my", { auth: true });
+                console.log("북마크 부스 ID 목록:", response);
+                setSavedBoothIds(response || []);
+                // 부스 상세 조회
+                const detailResponses = await Promise.all(
+                    (response || []).map((item) =>
+                    AxiosClient.get(`/booths/${item.boothId}`, { auth: true })
+                    )
+                );
+                // 이미지 + 북마크 수까지 붙이기
+                const detailsWithExtra = await Promise.all(
+                    detailResponses.map(async (booth) => {
+                    let imageUrl = null;
+                    let bookmarkCount = 0;
+
+                    // 이미지 조회
+                    if (booth.imageId) {
+                        try {
+                        const imgRes = await AxiosClient.get(`/images/${booth.imageId}`, { auth: true });
+                        imageUrl = imgRes.url;
+                        } catch (e) {
+                        console.error("이미지 불러오기 실패:", e);
+                        }
+                    }
+                    // 북마크 수 조회
+                    try {
+                        const countRes = await AxiosClient.get(`/booth-bookmarks/count/${booth.id}`, { auth: true });
+                        bookmarkCount = countRes ?? 0;
+                    } catch (e) {
+                        console.error("북마크 수 불러오기 실패:", e);
+                    }
+                    return { ...booth, logoUrl: imageUrl, bookmarkCount };
+                    })
+                );
+
+                console.log("부스 상세 최종 데이터:", detailsWithExtra);
+                setSavedBoothDetails(detailsWithExtra);
+            } catch (err) {
+                console.error("북마크 부스 불러오기 실패:", err);
+            }
+        };
+
+        fetchSavedBooths();
+    }, []);
+
+    // 부스 북마크 삭제
+    const handleDeleteBookmark = async (boothId) => {
+        try {
+            await AxiosClient.delete(`/booth-bookmarks/${boothId}`, { auth: true });
+            console.log("북마크 삭제 성공:", boothId);
+
+            // 리스트에서 해당 부스 제거
+            setSavedBoothDetails((prev) => prev.filter((booth) => booth.id !== boothId));
+        } catch (err) {
+            console.error("북마크 삭제 실패:", err);
+        }
+    };
+
 
     // 버튼 클릭 처리
     const handleTabClick = (tab) => {
@@ -48,8 +119,9 @@ export default function MyPage() {
     const fetchBooths = async () => {
         try {
             const data = await AxiosClient.get("/booths");
-            // console.log("서버 응답 데이터:", data);
-            setSavedBooths(data);
+            console.log("서버 응답 데이터:", data);
+            const stampedBooths = data.filter((booth) => booth.stamp === true);
+            setAllBooths(stampedBooths);
         } catch (err) {
             // console.error("API 요청 실패:", err);
         }
@@ -59,20 +131,21 @@ export default function MyPage() {
     const fetchMyStamps = async () => {
         try {
             const data = await AxiosClient.get("/booth-stamps/my", { auth: true });
-            // console.log("내 스탬프 데이터:", data);
+            console.log("내 스탬프 데이터:", data);
             setMyStamps(data);
         } catch (err) {
             // console.error("스탬프 조회 실패:", err);
         }
     };
 
-    // activeTab 또는 refreshKey가 바뀔 때마다 다시 불러오기
+    // 다시 랜더링
     useEffect(() => {
-        if (activeTab === "booth") {
-            fetchBooths();
-        } else if (activeTab === "stamp") {
-            fetchMyStamps();
-        }
+    if (activeTab === "booth") {
+        fetchBooths();
+    } else if (activeTab === "stamp") {
+        fetchBooths();
+        fetchMyStamps();
+    }
     }, [activeTab, refreshKey]);
 
 
@@ -96,13 +169,13 @@ export default function MyPage() {
         return myStamps.some(stamp => stamp.boothId === id);
     };
 
-    // 캐릭터 이동 거리 (스탬프 1개당 67px, 최대 5개까지만 이동)
+    // 캐릭터 이동 거리
     const charOffset = Math.min(myStamps.length, 5) * 53;
 
     return (
         <div className="ViewBox">
             <div className="ResponsiveScreen1">PeakTime</div>
-            <div id="MyPage" className="Always">
+            <div id="MyPage" className="MyPageAlways">
                 <Header />
                 <div className="MyPage">
                     <div className='MyPage-Always-Top'>
@@ -131,17 +204,45 @@ export default function MyPage() {
                     <div className='MyPage-Main-Box'>
                         {activeTab === "booth" && (
                             <>
-                                {savedBooths.length === 0 ? (
+                                {savedBoothDetails.length === 0 ? (
                                     <p className="Empty-Booth">
                                         캠퍼스맵에서 부스를 저장해 <br />
                                         한눈에 편하게 확인해보세요!
                                     </p>
                                 ) : (
-                                    <div className="Saved-Booth">
-                                        {savedBooths.map((booth, idx) => (
-                                            <div key={idx}>{booth.name}</div>
-                                        ))}
-                                    </div>
+                                <div className="Saved-Booth">
+                                    {savedBoothDetails.map((booth) => (
+                                        <div className="Saved-Booth-List" key={booth.id}>
+                                            <img 
+                                                src={booth.logoUrl || BoothLogo} 
+                                                alt="부스로고" 
+                                                className="saved-booth-logo"
+                                            />
+                                            <div className="Saved-Booth-Info">
+                                                <span>{booth.name}</span>
+                                                <p>{booth.description}</p>
+                                                <span>
+                                                    {[booth.keyword1, booth.keyword2, booth.keyword3]
+                                                        .filter((kw) => kw && kw.trim() !== "")
+                                                        .map((kw, idx) => (
+                                                        <div key={idx} className="Booth-KeyWords">
+                                                            {kw}
+                                                        </div>
+                                                    ))}
+                                                </span>
+                                            </div>
+                                            <div className="Saved-Booth-Icon">
+                                                <img
+                                                    src={booth.isDeleted ? delbookmark : saved}
+                                                    alt="저장"
+                                                    style={{ cursor: "pointer" }}
+                                                    onClick={() => handleDeleteBookmark(booth.id)}
+                                                />
+                                                <span>{booth.bookmarkCount > 99 ? "99+" : booth.bookmarkCount}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                                 )}
                             </>
                         )}
@@ -172,7 +273,7 @@ export default function MyPage() {
                                 </div>
 
                                 <div className="Stamp-Board-Grid">
-                                    {savedBooths.map((booth, idx) => (
+                                    {allBooths.map((booth, idx) => (
                                         <div className="Stamp-Board-Box" key={idx}>
                                             <img
                                                 src={hasStamp(booth.id) ? fillStamp : emptyStamp}

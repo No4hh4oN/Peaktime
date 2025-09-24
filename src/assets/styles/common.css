@@ -26,17 +26,18 @@
     background-repeat: no-repeat;
 }
 
-/* 
+
 .MyPageAlways {
     position: relative;
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #ffffff;
 }
 .MyPageAlways.no-scroll {
     overflow: hidden;
-} */
+}
+
+
 
 .ResponsiveScreen1,
 .ResponsiveScreen2 {
@@ -58,17 +59,16 @@
         display: none;
     }
     
-    /* .MyPageAlways {
+    .MyPageAlways {
         width: 360px;
-        height: 700px;
+        height: 800px;
         border: 5px solid #020202;
         border-radius: 20px;
         overflow-y: auto;
     }
-
     .MyPageAlways::-webkit-scrollbar {
         display: none;
-    } */
+    }
 
 
     .ViewBox {
@@ -92,9 +92,9 @@
     .SubMain {
         width: 393px;
     }
-    /* .MyPageAlways{
+    .MyPageAlways{
         width: 393px;
-    } */
+    }
 
     .MainScreen {
         justify-content: space-between;

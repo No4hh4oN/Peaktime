@@ -34,7 +34,7 @@ export default function Header() {
                     className="SideTabIcon"
                     onClick={toggleMenu}
                 />
-                <img src={headerLogo} alt="festaLogo" className='HeaderLogo' />
+                <img src={headerLogo} alt="festaLogo" className='HeaderLogo' onClick={() => navigator('/MainPage')}/>
             </div>
 
 
