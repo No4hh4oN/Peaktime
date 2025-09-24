@@ -56,8 +56,8 @@ export default function Header() {
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>지도</span>
-                        <span>부스배치도</span>
-                        <span>공연 관람구역</span>
+                        <span onClick={() => navigator('/Booth')}>부스배치도</span>
+                        <span onClick={() => navigator('/Concert')}>공연 관람구역</span>
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>무대</span>
