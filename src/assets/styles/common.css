@@ -14,9 +14,8 @@
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
-
 .Always.no-scroll {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .SubMain {
@@ -25,7 +24,17 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
 
+
+.MyPageAlways {
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+.MyPageAlways.no-scroll {
+    overflow: hidden;
 }
 
 .ResponsiveScreen1,
@@ -48,6 +57,17 @@
         display: none;
     }
     
+    .MyPageAlways {
+        width: 360px;
+        height: 800px;
+        border: 5px solid #020202;
+        border-radius: 20px;
+        overflow-y: auto;
+    }
+    .MyPageAlways::-webkit-scrollbar {
+        display: none;
+    }
+
 
     .ViewBox {
         display: flex;
@@ -68,6 +88,9 @@
         width: 393px;
     }
     .SubMain {
+        width: 393px;
+    }
+    .MyPageAlways{
         width: 393px;
     }
 

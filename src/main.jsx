@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
@@ -8,6 +10,9 @@ import MainPage from './mainpage/JsxFolder/MainPage'
 import Home from './home/Home';
 import Booth from './map/Booth';
 import Concert from './map/Concert';
+import TimeTable from './mainpage/JsxFolder/TimeTable'
+import LineUp from './mainpage/JsxFolder/LineUp'
+import MyPage from './mypage/MyPage.jsx'
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -64,6 +69,45 @@ function AnimatedRoutes() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <Concert />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/TimeTable" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <TimeTable />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/LineUp" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <LineUp />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/MyPage" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <MyPage />
             </motion.div>
           } 
         />
