@@ -13,9 +13,9 @@ import cross from "/icons/Cross.png";
 export default function Main() {
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">
+            {/* <div className="ResponsiveScreen1">
                 PeakTime
-            </div>
+            </div> */}
             <div id='mainAlways' className="Always">
                 <Header />
                 <div className='MainPage'>
@@ -56,9 +56,9 @@ export default function Main() {
                 </div>
                 <MainFooter/>
             </div>
-            <div className="ResponsiveScreen2">
+            {/* <div className="ResponsiveScreen2">
                 LikeLion
-            </div>
+            </div> */}
         </div>
     )
 }
