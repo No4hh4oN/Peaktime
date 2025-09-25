@@ -28,6 +28,7 @@
     width: 96px;
     height: 96px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .MyPage-Profile-Box span:nth-of-type(1){
@@ -253,9 +254,6 @@
     font-family: 'Pretendard-SemiBold';
 }
 
-
-
-
 .Saved-Booth{
     margin-top: 30px;
     display: flex;
@@ -294,12 +292,11 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-        /* 스크롤 설정 */
     overflow-y: auto;
-    flex: 1;              /* 남는 공간 차지 */
-    width: 100%;          /* 부모 너비 맞추기 */
+    flex: 1;
+    width: 100%;
     max-height: calc(100vh - 372px);
-    /* 스크롤바 숨기기 */
+
     scrollbar-width: none;   
     -ms-overflow-style: none;     
 }
@@ -329,7 +326,6 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
-    /* margin-top: 8px; */
     width: 185px;
 }
 .Booth-KeyWords{
@@ -342,7 +338,6 @@
     font-size: 12px;
     color: #464C52;
     text-align: center;
-    /* padding-top: 5px; */
     margin-top: 3px;
     padding: 5px 4px 0px 4px;
 }

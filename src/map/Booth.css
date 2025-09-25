@@ -18,6 +18,7 @@
 .campus-svg {
     width: 380px;
     height: 800px;
+    z-index: 1;
 }
 
 .marker-icon {
@@ -26,23 +27,40 @@
     width: 8px;
     height: 8px;
     cursor: pointer;
-    pointer-events: auto;
+    z-index: 2;
 }
 
-.BoothsContainer {
-    background: #FFFFFF;
+.booth-tooltip {
     position: absolute;
-    bottom: 0px;
-    width: calc(100% - 34px);
-    height: 15%;
-    padding-top: 50px;
-    padding-right: 17px;
-    padding-left: 17px;
-    justify-content: flex-start;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0px 0px 4px 0px #00000080;
+    transform: translate(-50%, calc(-100% - 10px));
+    min-width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5px 3px;
+    background: #4A9BF6;
+    border-radius: 4px;
+    font-family: 'DnfBitbeatV2';
+    font-size: 5px;
+    color: #1B1D1F;
+    white-space: nowrap;
+    z-index: 5;
+    pointer-events: auto;
+    color: #FFFFFF;
+}
 
+/* 아래 꼬리 */
+.booth-tooltip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #4A9BF6;
 }
 
 .BottomMenu {
@@ -52,14 +70,23 @@
     flex-direction: column;
     gap: 8px;
     max-height: 100%;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.BottomMenu::-webkit-scrollbar {
+    display: none;
 }
 
 .boothbox {
     background-color: #FFFFFF;
-    width: 100%;
+    width: calc(99% - 32px);
     height: 140px;
     border-radius: 12px;
     border: 2px solid #E9EBED;
+    display: flex;
+    gap: 19px;
+    padding: 16px;
 }
 
 .HandleBar {
@@ -68,4 +95,70 @@
     background: #ccc;
     border-radius: 3px;
     margin: 8px auto;
+}
+
+.Booth-Logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.Booth-Info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.Booth-Info-Name {
+    font-family: 'Pretendard-SemiBold';
+
+    font-size: 16px;
+    color: #1B1D1F;
+}
+
+.Booth-Info-Desc {
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    color: #9FA4A9;
+    margin-bottom: 31px;
+}
+
+.Booth-Bookmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+.Booth-Info-KeyWords {
+    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.Booth-Info-KeyWords span {
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    color: #464C52;
+    padding: 5px 13px;
+    max-width: 42px;
+    background-color: #E9EBED;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+.BookmarkIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.Bookmark-Count {
+    font-family: 'Pretendard-Light';
+    font-size: 12px;
+    color: #464C52;
 }
