@@ -8,6 +8,7 @@
     position: relative;
     width: 100vw;
     height: 100dvh;
+    /* height: auto; */
     background-image: url('/images/BackgroundImg.png');
     background-size: cover;
     background-position: center;
@@ -37,10 +38,10 @@
     overflow: hidden;
 }
 
-.ResponsiveScreen1,
+/* .ResponsiveScreen1,
 .ResponsiveScreen2 {
     display: none;
-}
+} */
 
 
 /* 태블릿 이상 */
@@ -69,7 +70,12 @@
         display: none;
     }
 
+<<<<<<< HEAD
     .ViewBox {
+=======
+    /* 기존거 주석처리 해둠 */
+    /* .ViewBox {
+>>>>>>> heeyoung
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -79,6 +85,19 @@
         padding: 100px 86px;
         background: linear-gradient(to bottom, #A8D5FF 0%, #FFF9F9 100%);
         flex-direction: row;
+    } */
+
+    .ViewBox {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-image: url('/images/viewBox.png');
+        background-repeat: no-repeat;  
+        background-position: center 60%; 
+        background-size: 100% auto; 
+        flex-direction: row;
+        width: 100vw;
+        height: 100dvh; 
     }
 }
 
@@ -99,7 +118,7 @@
     }
 
 
-    .ResponsiveScreen1 {
+    /* .ResponsiveScreen1 {
         display: flex;
         justify-content: flex-start;
     }
@@ -107,5 +126,5 @@
     .ResponsiveScreen2 {
         display: flex;
         justify-content: flex-end;
-    }
+    } */
 }

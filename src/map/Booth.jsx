@@ -1,3 +1,5 @@
+/* eslint-disable no-empty */
+/* eslint-disable no-unused-vars */
 import Header from '../components/header';
 import '../assets/styles/common.css';
 import './Booth.css';

@@ -1,7 +1,6 @@
 .MyPage{
     background-color: #ffffff;
     width: 100%;
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
 }
@@ -10,10 +9,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    z-index: 1000;
-    position: sticky;
-    top: 87px;
+    gap: 18px;
+    /* z-index: 1000; */
+    /* position: sticky; */
+    /* top: 87px; */
     background-color: #ffffff;
 }
 
@@ -51,7 +50,7 @@
     flex-direction: row;
     align-items: center;
     gap: 30px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .MyPage-Two-Button button{
@@ -88,7 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1300px;
+    height: 1250px;
     background-color: #ffffff;
 }
 
@@ -134,7 +133,7 @@
     gap: 30px 15px;              
     margin-top: 65px;
     width: 360px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 .Stamp-Board-Box{
     flex-direction: column;
@@ -255,7 +254,7 @@
 }
 
 .Saved-Booth{
-    margin-top: 30px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -270,7 +269,8 @@
 
 .Saved-Booth-List{
     width: 326px;
-    height: 125px;
+    /* height: 125px; */
+    height: auto;
     border-radius: 12px;
     border: 2px solid #E9EBED;
     display: flex;
@@ -278,7 +278,9 @@
     /* align-items: center; */
     justify-content: center;
     gap: 14px;
-    padding-top: 15px;
+    padding-top: 12px;
+    box-sizing: border-box;
+    padding-bottom: 10px;
 }
 
 .saved-booth-logo{
@@ -292,14 +294,18 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
+    padding-bottom: 30px;
+        /* 스크롤 설정 */
     overflow-y: auto;
-    flex: 1;
-    width: 100%;
-    max-height: calc(100vh - 372px);
-
+    flex: 1;              /* 남는 공간 차지 */
+    width: 100%;          /* 부모 너비 맞추기 */
+    /* max-height: calc( - 372px); */
+    /* 스크롤바 숨기기 */
     scrollbar-width: none;   
     -ms-overflow-style: none;     
 }
+
+
 .MyPage-Main-Box::-webkit-scrollbar {
     display: none;               
 }
@@ -329,18 +335,30 @@
     width: 185px;
 }
 .Booth-KeyWords{
-    width: 58px;
-    height: 19px;
-    border-radius: 10px;
+    /* width: 58px; */
+    /* height: 19px; */
+    border-radius: 100px;
     background-color: #E9EBED;
     font-family: 'Pretendard-Regular';
     font-weight: 400;
     font-size: 12px;
+    max-width: 42px;
     color: #464C52;
     text-align: center;
-    margin-top: 3px;
-    padding: 5px 4px 0px 4px;
+    margin-top: 5px;
+    padding: 5px 9px;
+    white-space: nowrap;
+    overflow-x: auto; 
 }
+.Booth-KeyWords::-webkit-scrollbar {
+    display: none;          
+}
+.Booth-KeyWords {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;   
+}
+
+
 .Saved-Booth-Icon{
     display: flex;
     flex-direction: column;
@@ -356,4 +374,26 @@
     font-weight: 300;
     font-size: 12px;
     color: #464C52;
+}
+
+
+.MyPage-Loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #E9EBED;
+    border-top: 4px solid #4A9BF6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

@@ -40,7 +40,7 @@ export default function LineUp() {
                             <span>LINE UP</span>
                             <img src={close2} alt="closeImg" />
                         </div>
-                        <hr style={{ border: "none", height: "5px", backgroundColor: "#243F73", margin: 0 }} />
+                        <hr style={{ border: "none", height: "4px", backgroundColor: "#243F73", margin: 0 }} />
 
                         <img src={sparkle4} alt="sparkle4" className='LUsparkle4' />    
 

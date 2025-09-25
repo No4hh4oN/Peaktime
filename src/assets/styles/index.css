@@ -10,7 +10,8 @@ body {
   display: flex;
   justify-content: center;
   min-width: 100vw;
-  min-height: 100dvh;
+  /* min-height: 100dvh; */
+  height: auto;
   margin: 0px;
   /* overflow-x: hidden; */
   text-size-adjust: 100%;
