@@ -128,7 +128,6 @@ export default function Booth() {
     const [pending, setPending] = useState({});
     const [loading, setLoading] = useState(false);
 
-    // 1) fetch 함수를 useCallback으로 분리
     const loadBooths = useCallback(async () => {
         setLoading(true);
         try {
@@ -173,14 +172,12 @@ export default function Booth() {
         e.stopPropagation();
         if (!booth) return;
 
-        // 중복 클릭 방지
         if (pending[booth.id]) return;
         setPending(prev => ({ ...prev, [booth.id]: true }));
 
         const prevIs = !!booth.isBookmark;
         const delta = prevIs ? -1 : 1;
 
-        // 낙관적으로 즉시 반영
         setBooths(prev =>
             prev.map(b =>
                 b.id === booth.id

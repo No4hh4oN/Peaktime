@@ -17,16 +17,14 @@ import BottomSheet from '../components/BottomSheet';
 export default function Concert() {
   const apiRef = useRef(null);
 
-  // 1) 로컬 마커만 사용 (서버 연동 X)
   const markers = [
     { id: 'E01', left: 22.0, top: 40.0, type: 'situation', description: '합동상황실입니다.' },
-    { id: 'E02', left: 25.0, top: 40.0, type: 'cavinet',   description: '물품보관소입니다.' },
-    { id: 'E03', left: 24.2, top: 60.8, type: 'ems',       description: '구급차입니다.' },
-    { id: 'E04', left: 26.0, top: 63.5, type: 'camera',    description: '카메라입니다.' },
-    { id: 'E05', left: 27.8, top: 62.1, type: 'fitting',   description: '탈의실입니다.' },
+    { id: 'E02', left: 25.0, top: 40.0, type: 'cavinet', description: '물품보관소입니다.' },
+    { id: 'E03', left: 24.2, top: 60.8, type: 'ems', description: '구급차입니다.' },
+    { id: 'E04', left: 26.0, top: 63.5, type: 'camera', description: '카메라입니다.' },
+    { id: 'E05', left: 27.8, top: 62.1, type: 'fitting', description: '탈의실입니다.' },
   ];
 
-  // 2) 타입/라벨 + 필터
   const TYPE_LABELS = {
     ALL: '전체',
     situation: '상황실',
@@ -35,17 +33,17 @@ export default function Concert() {
     camera: '카메라',
     fitting: '탈의실',
   };
-  // 4) 선택/포커스
+
   const [activeMarkerId, setActiveMarkerId] = useState(null);
 
   const getIcon = (type) => {
     switch (type) {
-      case 'cavinet':  return cavinetIcon;
-      case 'camera':   return cameraIcon;
-      case 'ems':      return emsIcon;
-      case 'fitting':  return fittingIcon;
-      case 'situation':return situationIcon;
-      default:         return situationIcon;
+      case 'cavinet': return cavinetIcon;
+      case 'camera': return cameraIcon;
+      case 'ems': return emsIcon;
+      case 'fitting': return fittingIcon;
+      case 'situation': return situationIcon;
+      default: return situationIcon;
     }
   };
 
@@ -72,13 +70,7 @@ export default function Concert() {
     }
   };
 
-  // 지도 클릭 시 좌표 로그/툴팁 해제
   const handleMapClick = (e) => {
-    // 디버깅용 좌표 출력 원하면 주석 해제
-    // const rect = e.currentTarget.getBoundingClientRect();
-    // const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-    // const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-    // console.log(`좌표: left=${xPercent.toFixed(1)}%, top=${yPercent.toFixed(1)}%`);
     setActiveMarkerId(null);
   };
 
