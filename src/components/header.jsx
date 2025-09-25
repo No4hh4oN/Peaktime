@@ -62,7 +62,6 @@ export default function Header() {
                     <div className='MenuBox-SubMenu'>
                         <span>무대</span>
                         <span>사연 라디오</span>
-                        <span>가요제</span>
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>마이페이지</span>
