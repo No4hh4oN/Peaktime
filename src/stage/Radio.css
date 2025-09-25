@@ -1,0 +1,178 @@
+.Radio{
+    background-color: #ffffff;
+    height: 760px;
+    width: 100%;
+}
+.Radio-Box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.Radio-Title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DnfBitbeatV2';
+    font-size: 24px;
+    text-align: center;
+    font-weight: 400;
+    color: #464C52;
+    gap: 3px;
+}
+
+.Radio-Title img{
+    width: 25px;
+    height: 23px;
+}
+.Radio-NoName{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    width: 86%;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+.Radio-NoName img{
+    width: 17px;
+    height: 18px;
+}
+.Radio-NoName-text{
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 14px;
+    color: #464C52;
+}
+.Radio-NoName-text span{
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+    font-size: 14px;
+}
+.Radio-Write-Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.Radio-input-title{
+    border: 2px solid #E9EBED;
+    width: 86%;
+    height: 48px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 13px;
+    color: #464C52;
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 16px;
+}
+.Radio-input-title::placeholder{
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 16px;
+    color: #9FA4A9;
+}
+
+.Radio-input-contents{
+    resize: none;
+    border: 2px solid #E9EBED;
+    width: 86%;
+    height: 325px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px;
+    outline: none;
+    color: #464C52;
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 16px;
+}
+.Radio-input-contents::placeholder{
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 16px;
+    color: #9FA4A9;
+}
+
+.Radio-comment{
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    color: #9FA4A9;
+    margin-top: 15px;
+}
+
+.Radio-Submit{
+    background-color: #FFA14F;
+    width: 161px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-family: 'DnfBitbeatV2';
+    font-size: 24px;
+    text-align: center;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 23px;
+}
+
+.Radio-Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.Radio-Modal {
+    background: #fff;
+    width: 226px;
+    height: 160px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.Radio-Modal-Close{
+    width: 14px;
+    height: 14px;
+    margin-left: 180px;
+    cursor: pointer;
+}
+
+.Modal-submit-img{
+    width: 68px;
+    height: 68px;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+.Modal-submit-text{
+    font-family: 'Pretendard-SemiBold';
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #1B1D1F;
+    margin-top: 10px;
+    line-height: 20px;
+    margin-left: 10px;
+}

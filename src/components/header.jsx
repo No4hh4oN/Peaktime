@@ -52,7 +52,7 @@ export default function Header() {
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>공지사항</span>
-                        <span>FAQ</span>
+                        <span onClick={() => navigator('/FAQ')}>FAQ</span>
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>지도</span>
@@ -61,7 +61,7 @@ export default function Header() {
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>무대</span>
-                        <span>사연 라디오</span>
+                        <span onClick={() => navigator('/Radio')}>사연 라디오</span>
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>마이페이지</span>

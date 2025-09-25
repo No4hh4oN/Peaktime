@@ -12,6 +12,8 @@ import Booth from './map/Booth';
 import Concert from './map/Concert';
 import TimeTable from './mainpage/JsxFolder/TimeTable'
 import LineUp from './mainpage/JsxFolder/LineUp'
+import Radio from './stage/Radio.jsx'
+import FAQ from './notice/FAQ.jsx'
 import MyPage from './mypage/MyPage.jsx'
 
 function AnimatedRoutes() {
@@ -95,6 +97,32 @@ function AnimatedRoutes() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <LineUp />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/Radio" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <Radio />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/FAQ" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <FAQ />
             </motion.div>
           } 
         />

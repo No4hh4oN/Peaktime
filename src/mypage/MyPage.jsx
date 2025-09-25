@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import Header from '../components/header';
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Header from '../components/header';
 import '../assets/styles/common.css';
 import "../mypage/MyPage.css";
 import Modal from "react-modal";
@@ -14,10 +14,7 @@ import treasureModal from '/images/treasureModal.png';
 import close from '/icons/close.png';
 import saved from '/icons/saved.png';
 import delbookmark from '/icons/delbookmark.png';
-
 import BoothLogo from '/images/BoothLogo.png';
-
-
 import AxiosClient from "../AxiosClinet";
 
 Modal.setAppElement("#root");
@@ -28,49 +25,45 @@ export default function MyPage() {
         return location.state?.tab || "booth";
     });
 
-    const [refreshKey, setRefreshKey] = useState(0); // 같은 탭 눌렀을 때도 렌더링
+    const [refreshKey, setRefreshKey] = useState(0);
     const [userName, setUserName] = useState("");
     const [department, setDepartment] = useState("");
-    const [myStamps, setMyStamps] = useState([]); // 스탬프 저장
+    const [myStamps, setMyStamps] = useState([]);
     const [allBooths, setAllBooths] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [savedBoothIds, setSavedBoothIds] = useState([]);
+    const [savedBoothDetails, setSavedBoothDetails] = useState([]);
+    const [loading, setLoading] = useState(true); // 로딩 상태
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    // 북마크 부스 목록
+    const fetchSavedBooths = async () => {
+        try {
+            const response = await AxiosClient.get("/booth-bookmarks/my", { auth: true });
+            setSavedBoothIds(response || []);
 
-    const [savedBoothIds, setSavedBoothIds] = useState([]); 
-    const [savedBoothDetails, setSavedBoothDetails] = useState([]);
-
-    // 북마크 부스 목록 가져오기
-    useEffect(() => {
-        const fetchSavedBooths = async () => {
-            try {
-                const response = await AxiosClient.get("/booth-bookmarks/my", { auth: true });
-                console.log("북마크 부스 ID 목록:", response);
-                setSavedBoothIds(response || []);
-                // 부스 상세 조회
-                const detailResponses = await Promise.all(
-                    (response || []).map((item) =>
+            const detailResponses = await Promise.all(
+                (response || []).map((item) =>
                     AxiosClient.get(`/booths/${item.boothId}`, { auth: true })
-                    )
-                );
-                // 이미지 + 북마크 수까지 붙이기
-                const detailsWithExtra = await Promise.all(
-                    detailResponses.map(async (booth) => {
+                )
+            );
+
+            const detailsWithExtra = await Promise.all(
+                detailResponses.map(async (booth) => {
                     let imageUrl = null;
                     let bookmarkCount = 0;
 
-                    // 이미지 조회
                     if (booth.imageId) {
                         try {
-                        const imgRes = await AxiosClient.get(`/images/${booth.imageId}`, { auth: true });
-                        imageUrl = imgRes.url;
+                            const imgRes = await AxiosClient.get(`/images/${booth.imageId}`, { auth: true });
+                            imageUrl = imgRes.url;
                         } catch (e) {
-                        console.error("이미지 불러오기 실패:", e);
+                            console.error("이미지 불러오기 실패:", e);
                         }
                     }
-                    // 북마크 수 조회
+
                     try {
                         const countRes = await AxiosClient.get(`/booth-bookmarks/count/${booth.id}`, { auth: true });
                         bookmarkCount = countRes ?? 0;
@@ -78,98 +71,96 @@ export default function MyPage() {
                         console.error("북마크 수 불러오기 실패:", e);
                     }
                     return { ...booth, logoUrl: imageUrl, bookmarkCount };
-                    })
-                );
+                })
+            );
 
-                console.log("부스 상세 최종 데이터:", detailsWithExtra);
-                setSavedBoothDetails(detailsWithExtra);
-            } catch (err) {
-                console.error("북마크 부스 불러오기 실패:", err);
-            }
-        };
+            setSavedBoothDetails(detailsWithExtra);
+        } catch (err) {
+            console.error("북마크 부스 불러오기 실패:", err);
+        }
+    };
 
-        fetchSavedBooths();
-    }, []);
-
-    // 부스 북마크 삭제
+    // 북마크 삭제
     const handleDeleteBookmark = async (boothId) => {
         try {
             await AxiosClient.delete(`/booth-bookmarks/${boothId}`, { auth: true });
-            console.log("북마크 삭제 성공:", boothId);
-
-            // 리스트에서 해당 부스 제거
             setSavedBoothDetails((prev) => prev.filter((booth) => booth.id !== boothId));
         } catch (err) {
             console.error("북마크 삭제 실패:", err);
         }
     };
 
-
-    // 버튼 클릭 처리
+    // 버튼 클릭
     const handleTabClick = (tab) => {
         if (tab === activeTab) {
-            setRefreshKey((prev) => prev + 1); // 같은 탭 눌러도 refreshKey 변경
+            setRefreshKey((prev) => prev + 1);
         } else {
             setActiveTab(tab);
-            localStorage.setItem("activeTab", tab); // 마지막 탭 저장
+            localStorage.setItem("activeTab", tab);
         }
     };
 
-    // 부스 목록 불러오기
+    // 부스 목록
     const fetchBooths = async () => {
         try {
             const data = await AxiosClient.get("/booths");
-            console.log("서버 응답 데이터:", data);
             const stampedBooths = data.filter((booth) => booth.stamp === true);
             setAllBooths(stampedBooths);
         } catch (err) {
-            // console.error("API 요청 실패:", err);
+            console.error("API 요청 실패:", err);
         }
     };
 
-    // 내 스탬프 불러오기
+    // 내 스탬프
     const fetchMyStamps = async () => {
         try {
             const data = await AxiosClient.get("/booth-stamps/my", { auth: true });
-            console.log("내 스탬프 데이터:", data);
             setMyStamps(data);
         } catch (err) {
-            // console.error("스탬프 조회 실패:", err);
+            console.error("스탬프 조회 실패:", err);
         }
     };
 
-    // 다시 랜더링
-    useEffect(() => {
-    if (activeTab === "booth") {
-        fetchBooths();
-    } else if (activeTab === "stamp") {
-        fetchBooths();
-        fetchMyStamps();
-    }
-    }, [activeTab, refreshKey]);
-
-
-    // 사용자 정보 불러오기
+    // 내 정보
     const fetchUserInfo = async () => {
         try {
             const data = await AxiosClient.get("/users/me", { auth: true });
-            console.log("로그인 사용자 정보:", data);
-                setUserName(data.name);       
-                setDepartment(data.department); 
+            setUserName(data.name);
+            setDepartment(data.department);
         } catch (err) {
             console.error("사용자 정보 조회 실패:", err);
         }
     };
+
+    // 초기 로딩 (내정보 + 북마크)
     useEffect(() => {
-        fetchUserInfo();
+        const fetchAll = async () => {
+            try {
+                await Promise.all([
+                    fetchUserInfo(),
+                    fetchSavedBooths()
+                ]);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchAll();
     }, []);
 
-    
+    // 탭 변경 시
+    useEffect(() => {
+        if (activeTab === "booth") {
+            fetchBooths();
+        } else if (activeTab === "stamp") {
+            fetchBooths();
+            fetchMyStamps();
+        }
+    }, [activeTab, refreshKey]);
+
     const hasStamp = (id) => {
         return myStamps.some(stamp => stamp.boothId === id);
     };
 
-    // 캐릭터 이동 거리
     const charOffset = Math.min(myStamps.length, 5) * 53;
 
     return (
@@ -178,115 +169,123 @@ export default function MyPage() {
             <div id="MyPage" className="MyPageAlways">
                 <Header />
                 <div className="MyPage">
-                    <div className='MyPage-Always-Top'>
-                        <div className='MyPage-Profile-Box'>
-                            <img src={profileimg} alt="profileImg" />
-                            <span>{userName}</span>
-                            <span>{department}</span>
+                    {loading ? (
+                        <div className="MyPage-Loading">
+                            <div className="spinner"></div>
                         </div>
-                        <div className='MyPage-Two-Button'>
-                            <button 
-                                className={activeTab === "booth" ? "active" : ""} 
-                                onClick={() => handleTabClick("booth")}
-                            >
-                                저장한 부스
-                            </button>
-                            <button 
-                                className={activeTab === "stamp" ? "active" : ""} 
-                                onClick={() => handleTabClick("stamp")}
-                            >
-                                도장판
-                            </button>
-                        </div>
-                        <hr style={{ border: "none", width:"90%", height: "2px", backgroundColor: "#E9EBED", margin: 0 }} />
-                    </div>
-                    
-                    <div className='MyPage-Main-Box'>
-                        {activeTab === "booth" && (
-                            <>
-                                {savedBoothDetails.length === 0 ? (
-                                    <p className="Empty-Booth">
-                                        캠퍼스맵에서 부스를 저장해 <br />
-                                        한눈에 편하게 확인해보세요!
-                                    </p>
-                                ) : (
-                                <div className="Saved-Booth">
-                                    {savedBoothDetails.map((booth) => (
-                                        <div className="Saved-Booth-List" key={booth.id}>
-                                            <img 
-                                                src={booth.logoUrl || BoothLogo} 
-                                                alt="부스로고" 
-                                                className="saved-booth-logo"
-                                            />
-                                            <div className="Saved-Booth-Info">
-                                                <span>{booth.name}</span>
-                                                <p>{booth.description}</p>
-                                                <span>
-                                                    {[booth.keyword1, booth.keyword2, booth.keyword3]
-                                                        .filter((kw) => kw && kw.trim() !== "")
-                                                        .map((kw, idx) => (
-                                                        <div key={idx} className="Booth-KeyWords">
-                                                            {kw}
-                                                        </div>
-                                                    ))}
-                                                </span>
-                                            </div>
-                                            <div className="Saved-Booth-Icon">
-                                                <img
-                                                    src={booth.isDeleted ? delbookmark : saved}
-                                                    alt="저장"
-                                                    style={{ cursor: "pointer" }}
-                                                    onClick={() => handleDeleteBookmark(booth.id)}
-                                                />
-                                                <span>{booth.bookmarkCount > 99 ? "99+" : booth.bookmarkCount}</span>
-                                            </div>
-                                        </div>
-                                    ))}
+                    ) : (
+                        <>
+                            <div className='MyPage-Always-Top'>
+                                <div className='MyPage-Profile-Box'>
+                                    <img src={profileimg} alt="profileImg" />
+                                    <span>{userName}</span>
+                                    <span>{department}</span>
                                 </div>
-                                )}
-                            </>
-                        )}
-
-                        {activeTab === "stamp" && (
-                            <div className="Stamp-Board">
-                                <div className='Stamp-Board-Title'>
-                                    부스를 돌며 <span>시계</span>를 모아 <br />
-                                    수야가 <span>보물상자</span>에 도달할 수 있도록 도와주세요!
+                                <div className='MyPage-Two-Button'>
+                                    <button 
+                                        className={activeTab === "booth" ? "active" : ""} 
+                                        onClick={() => handleTabClick("booth")}
+                                    >
+                                        저장한 부스
+                                    </button>
+                                    <button 
+                                        className={activeTab === "stamp" ? "active" : ""} 
+                                        onClick={() => handleTabClick("stamp")}
+                                    >
+                                        도장판
+                                    </button>
                                 </div>
-
-                                <div className='Go-Treasure-img'>
-                                    <img src={goTreasure} alt="Treasure-road" className='Treasure-Road' />
-                                    <img 
-                                        src={goChar} 
-                                        alt="charactor" 
-                                        className='Treasure-Char' 
-                                        style={{ transform: `translateX(${charOffset}px)` }}
-                                    />
-                                    {myStamps.length >= 5 && (
-                                        <button 
-                                            className="Open-Treasure-Btn"
-                                            onClick={openModal}
-                                        >
-                                            상자열어보기
-                                        </button>
-                                    )}
-                                </div>
-
-                                <div className="Stamp-Board-Grid">
-                                    {allBooths.map((booth, idx) => (
-                                        <div className="Stamp-Board-Box" key={idx}>
-                                            <img
-                                                src={hasStamp(booth.id) ? fillStamp : emptyStamp}
-                                                alt="stamp"
-                                                className="stamp-img"
-                                            />
-                                            <span>{booth.name}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                <hr style={{ border: "none", width:"90%", height: "2px", backgroundColor: "#E9EBED", margin: 0 }} />
                             </div>
-                        )}
-                    </div>
+                            
+                            <div className='MyPage-Main-Box'>
+                                {activeTab === "booth" && (
+                                    <>
+                                        {savedBoothDetails.length === 0 ? (
+                                            <p className="Empty-Booth">
+                                                캠퍼스맵에서 부스를 저장해 <br />
+                                                한눈에 편하게 확인해보세요!
+                                            </p>
+                                        ) : (
+                                        <div className="Saved-Booth">
+                                            {savedBoothDetails.map((booth) => (
+                                                <div className="Saved-Booth-List" key={booth.id}>
+                                                    <img 
+                                                        src={booth.logoUrl || BoothLogo} 
+                                                        alt="부스로고" 
+                                                        className="saved-booth-logo"
+                                                    />
+                                                    <div className="Saved-Booth-Info">
+                                                        <span>{booth.name}</span>
+                                                        <p>{booth.description}</p>
+                                                        <span>
+                                                            {[booth.keyword1, booth.keyword2, booth.keyword3]
+                                                                .filter((kw) => kw && kw.trim() !== "")
+                                                                .map((kw, idx) => (
+                                                                <div key={idx} className="Booth-KeyWords">
+                                                                    {kw}
+                                                                </div>
+                                                            ))}
+                                                        </span>
+                                                    </div>
+                                                    <div className="Saved-Booth-Icon">
+                                                        <img
+                                                            src={booth.isDeleted ? delbookmark : saved}
+                                                            alt="저장"
+                                                            style={{ cursor: "pointer" }}
+                                                            onClick={() => handleDeleteBookmark(booth.id)}
+                                                        />
+                                                        <span>{booth.bookmarkCount > 99 ? "99+" : booth.bookmarkCount}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        )}
+                                    </>
+                                )}
+
+                                {activeTab === "stamp" && (
+                                    <div className="Stamp-Board">
+                                        <div className='Stamp-Board-Title'>
+                                            부스를 돌며 <span>시계</span>를 모아 <br />
+                                            수야가 <span>보물상자</span>에 도달할 수 있도록 도와주세요!
+                                        </div>
+
+                                        <div className='Go-Treasure-img'>
+                                            <img src={goTreasure} alt="Treasure-road" className='Treasure-Road' />
+                                            <img 
+                                                src={goChar} 
+                                                alt="charactor" 
+                                                className='Treasure-Char' 
+                                                style={{ transform: `translateX(${charOffset}px)` }}
+                                            />
+                                            {myStamps.length >= 5 && (
+                                                <button 
+                                                    className="Open-Treasure-Btn"
+                                                    onClick={openModal}
+                                                >
+                                                    상자열어보기
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        <div className="Stamp-Board-Grid">
+                                            {allBooths.map((booth, idx) => (
+                                                <div className="Stamp-Board-Box" key={idx}>
+                                                    <img
+                                                        src={hasStamp(booth.id) ? fillStamp : emptyStamp}
+                                                        alt="stamp"
+                                                        className="stamp-img"
+                                                    />
+                                                    <span>{booth.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </>
+                    )}
                 </div> 
                 <Modal
                     isOpen={isModalOpen}
