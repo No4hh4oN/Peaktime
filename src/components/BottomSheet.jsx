@@ -7,8 +7,8 @@ export default function BottomSheet({ children }) {
     const [startY, setStartY] = useState(null);
     const [currentHeight, setCurrentHeight] = useState(200);
 
-    const minHeight = 100;
-    const maxHeight = window.innerHeight; // 헤더 빼고 거의 풀화면
+    const minHeight = 70;
+    const maxHeight = window.innerHeight - 87; // 헤더 빼고 거의 풀화면
 
     const [isDragging, setIsDragging] = useState(false);
 

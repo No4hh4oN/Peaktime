@@ -64,10 +64,10 @@
         border-radius: 20px;
         overflow-y: auto;
     }
+
     .MyPageAlways::-webkit-scrollbar {
         display: none;
     }
-
 
     .ViewBox {
         display: flex;
