@@ -87,7 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1300px;
+    height: 1250px;
     background-color: #ffffff;
 }
 
@@ -133,7 +133,7 @@
     gap: 30px 15px;              
     margin-top: 65px;
     width: 360px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 .Stamp-Board-Box{
     flex-direction: column;
@@ -254,8 +254,6 @@
 }
 
 
-
-
 .Saved-Booth{
     margin-top: 30px;
     display: flex;
@@ -294,15 +292,18 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
+    padding-bottom: 30px;
         /* 스크롤 설정 */
     overflow-y: auto;
     flex: 1;              /* 남는 공간 차지 */
     width: 100%;          /* 부모 너비 맞추기 */
-    max-height: calc(100vh - 372px);
+    /* max-height: calc(100vh - 372px); */
     /* 스크롤바 숨기기 */
     scrollbar-width: none;   
     -ms-overflow-style: none;     
 }
+
+
 .MyPage-Main-Box::-webkit-scrollbar {
     display: none;               
 }
