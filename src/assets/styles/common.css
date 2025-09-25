@@ -70,12 +70,8 @@
         display: none;
     }
 
-<<<<<<< HEAD
-    .ViewBox {
-=======
     /* 기존거 주석처리 해둠 */
     /* .ViewBox {
->>>>>>> heeyoung
         display: flex;
         flex-direction: column;
         justify-content: space-around;
