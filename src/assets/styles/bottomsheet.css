@@ -11,6 +11,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    touch-action: none;
+    overscroll-behavior: contain;
+    user-select: none;  
 }
 
 .BottomSheet-Handle {
@@ -22,10 +25,11 @@
 }
 
 .Handle-Bar {
-    width: 40px;
+    width: 140px;
     height: 5px;
     border-radius: 3px;
-    background: #ccc;
+    background: #E9EBED;
+    touch-action: none;
 }
 
 .BottomSheet-Content {

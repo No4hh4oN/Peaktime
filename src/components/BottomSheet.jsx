@@ -35,6 +35,7 @@ export default function BottomSheet({ children }) {
         setStartY(null);
         setIsDragging(false);
     };
+    
     return (
         <div
             className="BottomSheet"
