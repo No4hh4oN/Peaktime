@@ -15,6 +15,7 @@
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
+
 .Always.no-scroll {
     overflow: hidden;
 }
@@ -34,14 +35,15 @@
     background-repeat: no-repeat;
     background-color: #ffffff;
 }
+
 .MyPageAlways.no-scroll {
     overflow: hidden;
 }
 
-/* .ResponsiveScreen1,
+.ResponsiveScreen1,
 .ResponsiveScreen2 {
     display: none;
-} */
+}
 
 
 /* 태블릿 이상 */
@@ -57,7 +59,7 @@
     .Always::-webkit-scrollbar {
         display: none;
     }
-    
+
     .MyPageAlways {
         width: 360px;
         height: 800px;
@@ -65,34 +67,23 @@
         border-radius: 20px;
         overflow-y: auto;
     }
+
     .MyPageAlways::-webkit-scrollbar {
         display: none;
     }
 
-    /* 기존거 주석처리 해둠 */
-    /* .ViewBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        width: calc(100vw - 172px);
-        height: calc(100dvh - 200px);
-        padding: 100px 86px;
-        background: linear-gradient(to bottom, #A8D5FF 0%, #FFF9F9 100%);
-        flex-direction: row;
-    } */
-
     .ViewBox {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        gap: 59px;
         background-image: url('/images/viewBox.png');
-        background-repeat: no-repeat;  
-        background-position: center 60%; 
-        background-size: 100% auto; 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         flex-direction: row;
         width: 100vw;
-        height: 100dvh; 
+        height: 100dvh;
     }
 }
 
@@ -101,10 +92,12 @@
     .Always {
         width: 393px;
     }
+
     .SubMain {
         width: 393px;
     }
-    .MyPageAlways{
+
+    .MyPageAlways {
         width: 393px;
     }
 
@@ -113,13 +106,42 @@
     }
 
 
-    /* .ResponsiveScreen1 {
+    .ResponsiveScreen1 {
+        height: 800px;
         display: flex;
         justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .ResponsiveScreen1 img {
+        width: 326px;
     }
 
     .ResponsiveScreen2 {
+        height: 800px;
         display: flex;
+        flex-direction: column;
         justify-content: flex-end;
-    } */
+        align-items: flex-end;
+    }
+
+    .ResponsiveScreen2-div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-family: 'DnfBitbeatV2';
+    }
+
+    .ResponsiveScreen2-div :nth-child(1) {
+        font-size: 36px;
+        color: #9BC5F5;
+        line-height: 108.7%;
+    }
+
+    
+    .ResponsiveScreen2-div :nth-child(2) {
+        font-size: 20px;
+        color: #9BC5F5;
+        line-height: 108.7%;
+    }
 }

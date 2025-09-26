@@ -1,8 +1,8 @@
 .TimeTable {
     position: relative;
-    height: calc(100dvh - 77px);
-    min-height: 850px;
-    background-image: url('/images/BackgroundImg.png');
+    /* height: calc(100dvh - 69px); */
+    min-height: 750px;
+    /* background-image: url('/images/BackgroundImg.png'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

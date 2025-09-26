@@ -16,7 +16,7 @@ import saved from '/icons/saved.png';
 import delbookmark from '/icons/delbookmark.png';
 import BoothLogo from '/images/BoothLogo.png';
 import AxiosClient from "../AxiosClinet";
-
+import Marquee from "react-fast-marquee";
 Modal.setAppElement("#root");
 
 export default function MyPage() {
@@ -228,6 +228,24 @@ export default function MyPage() {
                                                             ))}
                                                         </span>
                                                     </div>
+                                                        {/* <div className="Saved-Booth-Keywords">
+                                                            {[booth.keyword1, booth.keyword2, booth.keyword3]
+                                                                .filter((kw) => kw && kw.trim() !== "")
+                                                                .map((kw, idx) => {
+                                                                    const isLong = kw.length > 3;
+                                                                    return (
+                                                                        <span key={idx}>
+                                                                            {isLong ? (
+                                                                                <Marquee pauseOnHover={true} gradient={false} speed={10}>
+                                                                                    {kw}
+                                                                                </Marquee>
+                                                                            ) : (
+                                                                                kw
+                                                                            )}
+                                                                        </span>
+                                                                    );
+                                                                })}
+                                                        </div> */}
                                                     <div className="Saved-Booth-Icon">
                                                         <img
                                                             src={booth.isDeleted ? delbookmark : saved}

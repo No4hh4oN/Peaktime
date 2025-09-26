@@ -1,17 +1,16 @@
-/* eslint-disable no-empty */
-/* eslint-disable no-unused-vars */
 import Header from '../components/header';
 import '../assets/styles/common.css';
 import './Booth.css';
 
 import Campusmap from '../assets/svg/Campusmap.svg?react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 import boothIcon from '../assets/svg/booth.svg';
 import photoIcon from '../assets/svg/photo.svg';
 import foodIcon from '../assets/svg/food.svg';
 import situationIcon from '../assets/svg/situation.svg';
+import eatIcon from '../assets/svg/eat.svg';
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
@@ -32,87 +31,59 @@ export default function Booth() {
     const apiRef = useRef(null);
 
     const markers = [
-        // 피크닉존 부스
-        { id: 'A01', left: 28.2, top: 29, type: 'booth' },
-        { id: 'A02', left: 30.2, top: 29, type: 'booth' },
-        { id: 'A03', left: 32.2, top: 29, type: 'booth' },
-        { id: 'A04', left: 34.2, top: 29, type: 'booth' },
-        { id: 'A05', left: 36.2, top: 29, type: 'booth' },
-        { id: 'A06', left: 38.2, top: 29, type: 'booth' },
-
-        { id: 'A07', left: 39.6, top: 30.3, type: 'booth' },
-        { id: 'A08', left: 39.6, top: 32.3, type: 'booth' },
-        { id: 'A09', left: 39.6, top: 34.3, type: 'booth' },
-        { id: 'A10', left: 39.6, top: 36.3, type: 'booth' },
-        { id: 'A11', left: 39.6, top: 38.3, type: 'booth' },
-        { id: 'A12', left: 39.6, top: 40.3, type: 'booth' },
-
-        { id: 'A13', left: 32.4, top: 42.8, type: 'situation' },
-        { id: 'A14', left: 31.0, top: 42.8, type: 'situation' },
-        { id: 'A15', left: 29.6, top: 42.8, type: 'situation' },
-        { id: 'A16', left: 28.2, top: 42.8, type: 'situation' },
-
         // 솔광    
-        { id: 'C01', left: 6.1, top: 48.8, type: 'booth' },
-        { id: 'C02', left: 8.1, top: 48.8, type: 'booth' },
-        { id: 'C03', left: 10.1, top: 48.8, type: 'booth' },
-        { id: 'C04', left: 12.1, top: 48.8, type: 'booth' },
+        { id: 'C01', left: 7, top: 49.5, type: 'booth' },
+        { id: 'C03', left: 10.5, top: 49.5, type: 'booth' },
 
-        { id: 'C05', left: 13.8, top: 50.8, type: 'photo' },
-        { id: 'C06', left: 13.8, top: 52.8, type: 'photo' },
-        { id: 'C07', left: 13.8, top: 54.8, type: 'photo' },
-        { id: 'C08', left: 13.8, top: 56.8, type: 'photo' },
+        { id: 'C05', left: 13.1, top: 50.8, type: 'photo' },
+        { id: 'C06', left: 13.1, top: 52.8, type: 'photo' },
+        { id: 'C07', left: 13.1, top: 54.8, type: 'photo' },
+        { id: 'C08', left: 13.1, top: 56.8, type: 'photo' },
 
-        { id: 'C09', left: 6.1, top: 58.5, type: 'booth' },
-        { id: 'C10', left: 8.1, top: 58.5, type: 'booth' },
-        { id: 'C11', left: 10.1, top: 58.5, type: 'booth' },
-        { id: 'C12', left: 12.1, top: 58.5, type: 'booth' },
+        { id: 'C09', left: 10.5, top: 58.0, type: 'booth' },
+        { id: 'C11', left: 7, top: 58.0, type: 'booth' },
 
-        { id: 'C13', left: 3.8, top: 50.5, type: 'booth' },
-        { id: 'C14', left: 3.8, top: 52.5, type: 'booth' },
-        { id: 'C15', left: 3.8, top: 54.5, type: 'booth' },
-        { id: 'C16', left: 3.8, top: 56.5, type: 'booth' },
+        { id: 'C13', left: 4.8, top: 55.8, type: 'booth' },
+        { id: 'C15', left: 4.8, top: 51.8, type: 'booth' },
 
+        // 도서관 부스
+        { id: 'B01', left: 3.8, top: 44.7, type: 'booth' },
+
+        { id: 'B03', left: 5.2, top: 42.0, type: 'booth' },
+        { id: 'B05', left: 5.2, top: 39.5, type: 'booth' },
+        { id: 'B07', left: 5.2, top: 37.0, type: 'booth' },
+
+        { id: 'B09', left: 7.2, top: 34.8, type: 'booth' },
+        { id: 'B10', left: 7.2, top: 36.5, type: 'booth' },
+
+        { id: 'B13', left: 8.3, top: 39.0, type: 'booth' },
+
+        { id: 'B15', left: 11.5, top: 41.8, type: 'booth' },
+        { id: 'B16', left: 12.0, top: 43.2, type: 'booth' },
+
+        { id: 'B17', left: 15.0, top: 44.5, type: 'booth' },
+        { id: 'B19', left: 11.5, top: 47.1, type: 'booth' },
+        { id: 'B21', left: 8, top: 47.1, type: 'booth' },
+        
         // 푸드트럭
-        { id: 'D01', left: 18.1, top: 58.1, type: 'food' },
+        { id: 'D00', left: 18.1, top: 58.1, type: 'food' },
+        { id: 'D01', left: 22.1, top: 58.1, type: 'food' },
         { id: 'D02', left: 26.1, top: 58.1, type: 'food' },
         { id: 'D03', left: 28.1, top: 63.1, type: 'food' },
         { id: 'D04', left: 24.1, top: 63.1, type: 'food' },
         { id: 'D05', left: 20.1, top: 63.1, type: 'food' },
         { id: 'D06', left: 16.1, top: 63.1, type: 'food' },
+        
+        // 피크닉존 부스
+        { id: 'A00', left: 35.3, top: 32.3, type: 'eat' },
+        { id: 'A01', left: 29.3, top: 38.3, type: 'eat' },
 
-        // 도서관 부스
-        { id: 'B01', left: 3.8, top: 44.7, type: 'booth' },
-        { id: 'B02', left: 5.2, top: 44.7, type: 'booth' },
-
-        { id: 'B03', left: 5.2, top: 43.0, type: 'booth' },
-        { id: 'B04', left: 5.2, top: 41.6, type: 'booth' },
-        { id: 'B05', left: 5.2, top: 40.2, type: 'booth' },
-        { id: 'B06', left: 5.2, top: 38.8, type: 'booth' },
-        { id: 'B07', left: 5.2, top: 37.4, type: 'booth' },
-        { id: 'B08', left: 5.2, top: 36.0, type: 'booth' },
-
-        { id: 'B09', left: 7.5, top: 34.6, type: 'booth' },
-        { id: 'B10', left: 7.5, top: 36.0, type: 'booth' },
-
-        { id: 'B11', left: 8.8, top: 39, type: 'booth' },
-        { id: 'B12', left: 8.8, top: 40.4, type: 'booth' },
-        { id: 'B13', left: 8.8, top: 41.8, type: 'booth' },
-        { id: 'B14', left: 8.8, top: 43.2, type: 'booth' },
-        { id: 'B15', left: 10.4, top: 43.2, type: 'booth' },
-        { id: 'B16', left: 12.0, top: 43.2, type: 'booth' },
-
-
-        { id: 'B17', left: 15.9, top: 43.8, type: 'booth' },
-        { id: 'B18', left: 15.9, top: 45.2, type: 'booth' },
-
-        { id: 'B19', left: 13.0, top: 47.1, type: 'booth' },
-        { id: 'B20', left: 11.6, top: 47.1, type: 'booth' },
-        { id: 'B21', left: 10.2, top: 47.1, type: 'booth' },
-        { id: 'B22', left: 8.8, top: 47.1, type: 'booth' },
-
+        { id: 'A13', left: 33.4, top: 42.8, type: 'situation' },
+        { id: 'A14', left: 31.6, top: 42.8, type: 'situation' },
+        { id: 'A15', left: 29.8, top: 42.8, type: 'situation' },
+        { id: 'A16', left: 28.0, top: 42.8, type: 'situation' },
+        { id: 'A17', left: 26.2, top: 42.8, type: 'situation' },
     ];
-
 
     const [activeMarkerId, setActiveMarkerId] = useState(null);
 
@@ -123,10 +94,12 @@ export default function Booth() {
             case 'photo': return photoIcon;
             case 'food': return foodIcon;
             case 'situation': return situationIcon;
+            case 'eat': return eatIcon;
             default: return boothIcon;
         }
     };
 
+    // 포커싱
     const focusOnMarker = (marker) => {
         const api = apiRef.current;
         if (!api) return;
@@ -152,9 +125,9 @@ export default function Booth() {
 
     const navigate = useNavigate();
     const [booths, setBooths] = useState([]);
+    const [pending, setPending] = useState({});
     const [loading, setLoading] = useState(false);
 
-    // 1) fetch 함수를 useCallback으로 분리
     const loadBooths = useCallback(async () => {
         setLoading(true);
         try {
@@ -197,39 +170,84 @@ export default function Booth() {
 
     const handleToggleBookmark = async (booth, e) => {
         e.stopPropagation();
+        if (!booth) return;
+
+        if (pending[booth.id]) return;
+        setPending(prev => ({ ...prev, [booth.id]: true }));
+
+        const prevIs = !!booth.isBookmark;
+        const delta = prevIs ? -1 : 1;
+
+        setBooths(prev =>
+            prev.map(b =>
+                b.id === booth.id
+                    ? {
+                        ...b,
+                        isBookmark: !prevIs,
+                        bookmarkCount: Math.max(0, (b.bookmarkCount ?? 0) + delta),
+                    }
+                    : b
+            )
+        );
+
         try {
-            if (booth.isBookmark) {
+            if (prevIs) {
                 await cancelBookmark(booth.id);
             } else {
                 await doBookmark(booth.id);
             }
-            await loadBooths();
         } catch (err) {
-            console.error("북마크 처리 실패:", err);
+            setBooths(prev =>
+                prev.map(b =>
+                    b.id === booth.id
+                        ? {
+                            ...b,
+                            isBookmark: prevIs,
+                            bookmarkCount: Math.max(0, (b.bookmarkCount ?? 0) - delta),
+                        }
+                        : b
+                )
+            );
+        } finally {
+            setPending(prev => ({ ...prev, [booth.id]: false }));
         }
     };
 
-    const boothMarkers = markers.map((marker) => {
-        const booth = booths.find((b) => b.locateId === marker.id);
-        return {
-            ...marker,
-            booth,
-        };
-    });
+    const boothMap = useMemo(() => {
+        const m = new Map();
+        for (const b of booths) m.set(b.locateId, b);
+        return m;
+    }, [booths]);
 
-    const handleMapClick = (e) => {
-  // 화면 좌표 기준 최상단 요소
-  const el = document.elementFromPoint(e.clientX, e.clientY);
-  const markerEl = el?.closest?.('.marker-icon');
-  if (!markerEl) return; // 아이콘이 아니면 무시
+    const displayMarkers = useMemo(() => {
+        return markers
+            .filter(m => boothMap.has(m.id))
+            .map(m => ({
+                ...m,
+                booth: boothMap.get(m.id) ?? null,
+            }));
+    }, [markers, boothMap]);
 
-  const id = markerEl.id;
-  const m = boothMarkers.find(b => b.id === id);
-  if (m) {
-    setActiveMarkerId(m.id);
-    focusOnMarker(m);
-  }
-};
+
+
+    // 하단 정보 필터링
+    const FILTERS = [
+        { key: 'all', label: '전체' },
+        { key: 'booth', label: '부스', types: ['booth'] },
+        { key: 'photo', label: '포토', types: ['photo'] },
+        { key: 'foodEat', label: '음식', types: ['food', 'eat'] },
+        { key: 'situation', label: '상황실', types: ['situation'] },
+    ];
+
+    const [selectedFilter, setSelectedFilter] = useState('all');
+
+    const filteredMarkers = useMemo(() => {
+        if (selectedFilter === 'all') return displayMarkers;
+        const def = FILTERS.find(f => f.key === selectedFilter);
+        if (!def?.types) return displayMarkers;
+        const typeSet = new Set(def.types);
+        return displayMarkers.filter(m => typeSet.has(m.type));
+    }, [displayMarkers, selectedFilter]);
 
     return (
         <div className="ViewBox">
@@ -243,26 +261,16 @@ export default function Booth() {
                         initialScale={1.6}
                         limitToBounds={true}
                         animation={{ animationTime: 420, animationType: 'easeOutQuad' }}
-                        ref={apiRef}
                         onInit={(utils) => {
+                            apiRef.current = utils;
                             utils.setTransform(50, -500, 2, 0);
                         }}
                     >
                         <TransformComponent>
-                            <div
-                                className="map-wrap"
-                                onClick={() => {
-                                    // 좌표 디버깅 용
-                                    // const rect = e.currentTarget.getBoundingClientRect();
-                                    // const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-                                    // const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-                                    // console.log(`좌표: left=${xPercent.toFixed(1)}%, top=${yPercent.toFixed(1)}%`);
-                                    setActiveMarkerId(null);
-                                }}
-                            >
+                            <div className="map-wrap" onClick={() => { setActiveMarkerId(null); }}>
                                 <Campusmap className="campus-svg" />
 
-                                {boothMarkers.map((m) => (
+                                {displayMarkers.map((m) => (
                                     <img
                                         id={m.id}
                                         key={m.id}
@@ -279,9 +287,9 @@ export default function Booth() {
 
                                 {(() => {
                                     if (!activeMarkerId) return null;
-                                    const am = boothMarkers.find(b => b.id === activeMarkerId);
+                                    const am = displayMarkers.find(b => b.id === activeMarkerId);
                                     if (!am) return null;
-                                    const label = am.booth?.name || am.id;
+                                    const label = am.booth?.name;
                                     return (
                                         <div
                                             className="booth-tooltip"
@@ -298,8 +306,26 @@ export default function Booth() {
                 </div>
 
                 <BottomSheet>
+                    <div className="FilterBar">
+                        {FILTERS.map(f => {
+                            const count = f.key === 'all'
+                                ? displayMarkers.length
+                                : displayMarkers.filter(m => (f.types ?? []).includes(m.type)).length;
+
+                            return (
+                                <button
+                                    key={f.key}
+                                    className={`filter-btn ${selectedFilter === f.key ? 'active' : ''}`}
+                                    onClick={() => setSelectedFilter(f.key)}
+                                >
+                                    {f.label}
+                                    {/* <span className="count-badge">{count}</span> */}
+                                </button>
+                            );
+                        })}
+                    </div>
                     <div className='BottomMenu'>
-                        {!loading && boothMarkers.map((m) => (
+                        {!loading && filteredMarkers.map((m) => (
                             <div
                                 className='boothbox'
                                 key={m.id}
@@ -340,7 +366,7 @@ export default function Booth() {
                                 {m.booth && (
                                     <div className="Booth-Bookmark">
                                         <img
-                                            className='BookmarkIcon'
+                                            className={`BookmarkIcon ${pending[m.booth?.id] ? 'is-pending' : ''}`}
                                             src={m.booth.isBookmark ? saved : delbookmark}
                                             alt="저장"
                                             onClick={(e) => handleToggleBookmark(m.booth, e)}

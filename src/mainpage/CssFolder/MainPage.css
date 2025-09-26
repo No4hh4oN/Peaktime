@@ -5,7 +5,7 @@
 
 .MainPage {
     position: relative;
-    height: calc(100dvh - 77px);
+    height: calc(100dvh - 69px);
     min-height: 689px;
     background-image: url('/images/BackgroundImg.png');
     background-size: cover;
@@ -95,19 +95,15 @@
 }
 
 .MainPage_Co {
-    margin-top: 8px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
     font-family: 'DnfBitbeatV2';
     font-size: 11px;
-    color: #FFFFFF;
-}
-
-#MainSynergy,
-#MainLikelion13th {
-    text-align: center;
-    text-shadow: 0px 0px 4px rgba(19, 29, 53, 0.6);
+    font-weight: 400;
+    color:#8DAAE3;
     letter-spacing: 1.2px;
+    text-align: center;
 }

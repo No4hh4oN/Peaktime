@@ -1,0 +1,148 @@
+.FAQ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    background-color: #fff;
+    height: auto;
+    margin-bottom: 20px;
+    /* padding: 0 20px; */
+    width: 100%;
+}
+
+.FAQ-Top {
+    font-size: 24px;
+    color: #464C52;
+    font-family: 'DnfBitbeatV2';
+    font-weight: 400;
+    margin-top: 25px;
+}
+
+.FAQ-Top-text {
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: #464C52;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.FAQ-Categories {
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.FAQ-CategoryTab {
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 100px;
+    border: 1px solid #E9EBED;
+    background-color: #ffffff;
+    color: #9FA4A9;
+    outline: none;
+    cursor: pointer;
+}
+
+.FAQ-CategoryTab.is-selected {
+    background-color: #0088FF;
+    color: #ffffff;
+    border: none;
+    outline: none;
+}
+
+.qna-first-img {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+}
+
+.qna-open-icon {
+    width: 17px;
+    height: 9px;
+    flex: 0 0 auto;
+}
+
+.answer-icon {
+    width: 23px;
+    height: 24px;
+}
+
+.FAQ-Box {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.FAQ-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.FAQ-itemGroup {
+    width: 100%;
+}
+
+.FAQ-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+}
+
+.FAQ-answer {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.q-contents {
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 16px;
+    color: #1A1A20;
+    flex: 1 1 auto;
+    display: block;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-height: 22px;
+}
+
+.q-category {
+    width: 100%;
+    text-align: left;
+    margin: 8px 0 15px 27px;
+    font-family: 'Pretendard-Light';
+    font-weight: 300;
+    font-size: 14px;
+    color: #9FA4A9;
+}
+
+.a-contents {
+    flex: 1 1 auto;
+    display: block;
+    white-space: normal;
+    /* overflow-wrap: anywhere; */
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #464C52;
+}

@@ -327,16 +327,36 @@
     color: #9FA4A9;
 }
 
-.Saved-Booth-Info span:nth-of-type(2){
+/* 기존 Booth-Info-KeyWords와 동일하게 */
+.Saved-Booth-Keywords {
+    margin-top: 5px;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.Saved-Booth-Keywords span {
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+    color: #464C52;
+    padding: 5px 13px;
+    max-width: 42px;
+    background-color: #E9EBED;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+
+/* 예전 규칙들은 더 이상 필요 없음 */
+/* .Saved-Booth-Info span:nth-of-type(2) { 
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 5px;
     width: 185px;
-}
-.Booth-KeyWords{
-    /* width: 58px; */
-    /* height: 19px; */
+} */
+
+/* .Booth-KeyWords { 
     border-radius: 100px;
     background-color: #E9EBED;
     font-family: 'Pretendard-Regular';
@@ -348,15 +368,11 @@
     margin-top: 5px;
     padding: 5px 9px;
     white-space: nowrap;
-    overflow-x: auto; 
+    overflow-x: auto;
 }
-.Booth-KeyWords::-webkit-scrollbar {
-    display: none;          
-}
-.Booth-KeyWords {
-    -ms-overflow-style: none; 
-    scrollbar-width: none;   
-}
+.Booth-KeyWords::-webkit-scrollbar { display: none; }
+.Booth-KeyWords { -ms-overflow-style: none; scrollbar-width: none; } */
+
 
 
 .Saved-Booth-Icon{

@@ -13,16 +13,15 @@
     margin-bottom: 10px;
 }
 
-.sponsorImg{
-    width: 172px;
-    height: 172px;
-}
 .Sponsor-Img{
     display: flex;
     flex-direction: row;
     gap: 10px;
+    width: 108px;
+    height: 108px;
 }
-.Sponsor-set{
+
+.Sponsor-Name{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,7 +32,12 @@
     position: relative;
 }
 
-.Sponsor-set span{
-    position: absolute;
-    bottom: 8px;
+.Sponsor-List{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap; /* 줄바꿈 */
+    justify-content: center; 
+    column-gap: 10px;         
+    row-gap: 10px;           
 }

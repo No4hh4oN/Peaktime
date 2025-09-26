@@ -33,6 +33,7 @@ export default function LoginModal({ isOpen, onRequestClose }) {
             navigator('/MainPage');
         } catch (err) {
             setErrorOpen(true);
+            console.error(err)
         }
     };
 

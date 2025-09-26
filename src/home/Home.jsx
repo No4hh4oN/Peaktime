@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <div className="ViewBox">
             <div className="ResponsiveScreen1">
-                PeakTime
+                <img src={festaLogo} alt="" />
             </div>
             <div id='home' className="Always">
                 <div className='HomeContents'>
@@ -47,7 +47,17 @@ export default function Home() {
                 </div>
             </div>
             <div className="ResponsiveScreen2">
-                LikeLion
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
             </div>
             <LoginModal isOpen={isLoginOpen} onRequestClose={() => setLoginOpen(false)} />
             <JoinModal isOpen={isJoinOpen} onRequestClose={() => setJoinOpen(false)} />
