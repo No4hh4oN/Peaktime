@@ -41,3 +41,8 @@
     column-gap: 10px;         
     row-gap: 10px;           
 }
+
+
+.Sponsor-Card:first-child {
+    margin-right: -10px;
+}
