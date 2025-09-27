@@ -39,9 +39,26 @@ export default function Home() {
                         </span>
                     </div>
                     <div className='authButtons'>
-                        <button id='login' className='authButton' onClick={() => setLoginOpen(true)}>로그인</button>
+                        <button 
+                            id='login' 
+                            className='authButton' 
+                            onClick={() => {
+                                localStorage.setItem("isLogin", "true"); // 로그인 성공 시
+                                setLoginOpen(true);
+                            }}
+                        >
+                            로그인
+                        </button>
                         <button id='join' className='authButton' onClick={() => setJoinOpen(true)}>계정 만들기</button>
-                        <button id='noAuth' onClick={() => navigator('/MainPage')}>비회원 입장하기</button>
+                        <button 
+                            id='noAuth' 
+                            onClick={() => {
+                                localStorage.setItem("isLogin", "false"); // 비회원 입장
+                                navigator('/MainPage');
+                            }}
+                        >
+                            비회원 입장하기
+                        </button>
                     </div>
                     <img id='festaLogo' src={festaLogo} alt="PeakTime" />
                 </div>

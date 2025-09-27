@@ -1,0 +1,70 @@
+.Logout-Modal-Box img:nth-of-type(1){
+    width: 105px;
+    height: 114px;
+    margin-top: 4px;
+}
+.Logout-Modal-Box img:nth-of-type(2){
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.Logout-Modal-Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: 3px;
+    /* margin-top: 5px; */
+}
+
+.LogoutModal {
+    background: #fff;
+    border-radius: 10px;
+    margin: auto;
+    text-align: center;
+    width: 220px;
+    height: 206px;
+    border-radius: 10px;
+    outline: none;
+    /* box-sizing: border-box; */
+    padding: 12px 12px 0px 10px;
+}
+
+.LogoutOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;  
+}
+
+.Logout-Modal-Box p{
+    font-family: 'Pretendard-Medium';
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #464C52;
+    margin: 5px 0px 10px 0px;
+}
+
+.Logout-Modal-Box button{
+    width: 186px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    background-color: #9FA4A9;
+    font-family: 'Pretendard-SemiBold';
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+}
