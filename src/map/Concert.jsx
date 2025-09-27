@@ -6,6 +6,7 @@ import Concertmap from '../assets/svg/Concertmap.svg?react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useRef, useState } from "react";
 
+import festaLogo from "/images/festaLogo.png";
 import cavinetIcon from '../assets/svg/cavinet.svg';
 import cameraIcon from '../assets/svg/camera.svg';
 import emsIcon from '../assets/svg/ems.svg';
@@ -76,7 +77,9 @@ export default function Concert() {
 
   return (
     <div className="ViewBox">
-      <div className="ResponsiveScreen1">PeakTime</div>
+      <div className="ResponsiveScreen1">
+        <img src={festaLogo} alt="" />
+      </div>
       <div id="boothAlways" className="Always">
         <Header />
         <div className="Booth-Container">
@@ -126,7 +129,19 @@ export default function Concert() {
           </TransformWrapper>
         </div>
       </div>
-      <div className="ResponsiveScreen2">LikeLion</div>
+      <div className="ResponsiveScreen2">
+        <div className='ResponsiveScreen2-div'>
+          <span id=''>
+            20<br />
+            25
+          </span>
+          <span>
+            SAHMYOOK<br />
+            UNIVERSITY<br />
+            FESTIVAL
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

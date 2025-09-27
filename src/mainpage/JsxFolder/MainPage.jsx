@@ -8,14 +8,15 @@ import Sponsor from "./Sponsor"
 import MainFooter from "./MainFooter"
 import MainImg from "/images/MainImg.png";
 import festaTitle from "/images/festaTitle.png";
+import festaLogo from "/images/festaLogo.png";
 import cross3 from "/icons/mainpageCross.png";
 
 export default function Main() {
     return (
         <div className="ViewBox">
-            {/* <div className="ResponsiveScreen1">
-                PeakTime
-            </div> */}
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id='mainAlways' className="Always">
                 <Header />
                 <div className='MainPage'>
@@ -49,16 +50,26 @@ export default function Main() {
                     </div>
                 </div>
                 <div className='SubMain'>
-                    <PurposeHistory/>
-                    <About/>
-                    <Sponsor/>
-                    <Footer/>
+                    <PurposeHistory />
+                    <About />
+                    <Sponsor />
+                    <Footer />
                 </div>
-                <MainFooter/>
+                <MainFooter />
             </div>
-            {/* <div className="ResponsiveScreen2">
-                LikeLion
-            </div> */}
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Header from '../components/header';
 import '../assets/styles/common.css';
 import "../mypage/MyPage.css";
 import Modal from "react-modal";
+import festaLogo from "/images/festaLogo.png";
 import profileimg from '/images/profileEX.png';
 import goTreasure from '/images/GoTreasure.png';
 import goChar from '/images/charactor2.png';
@@ -165,7 +166,9 @@ export default function MyPage() {
 
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">PeakTime</div>
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id="MyPage" className="MyPageAlways">
                 <Header />
                 <div className="MyPage">
@@ -182,22 +185,22 @@ export default function MyPage() {
                                     <span>{department}</span>
                                 </div>
                                 <div className='MyPage-Two-Button'>
-                                    <button 
-                                        className={activeTab === "booth" ? "active" : ""} 
+                                    <button
+                                        className={activeTab === "booth" ? "active" : ""}
                                         onClick={() => handleTabClick("booth")}
                                     >
                                         저장한 부스
                                     </button>
-                                    <button 
-                                        className={activeTab === "stamp" ? "active" : ""} 
+                                    <button
+                                        className={activeTab === "stamp" ? "active" : ""}
                                         onClick={() => handleTabClick("stamp")}
                                     >
                                         도장판
                                     </button>
                                 </div>
-                                <hr style={{ border: "none", width:"90%", height: "2px", backgroundColor: "#E9EBED", margin: 0 }} />
+                                <hr style={{ border: "none", width: "90%", height: "2px", backgroundColor: "#E9EBED", margin: 0 }} />
                             </div>
-                            
+
                             <div className='MyPage-Main-Box'>
                                 {activeTab === "booth" && (
                                     <>
@@ -207,49 +210,49 @@ export default function MyPage() {
                                                 한눈에 편하게 확인해보세요!
                                             </p>
                                         ) : (
-                                        <div className="Saved-Booth">
-                                            {savedBoothDetails.map((booth) => (
-                                                <div className="Saved-Booth-List" key={booth.id}>
-                                                    <img 
-                                                        src={booth.logoUrl || BoothLogo} 
-                                                        alt="부스로고" 
-                                                        className="saved-booth-logo"
-                                                    />
-                                                    <div className="Saved-Booth-Info">
-                                                        <span className="Saved-Booth-name">{booth.name}</span>
-                                                        <p>{booth.description}</p>
-                                                        <div className="Saved-Booth-Keywords">
-                                                            {[booth.keyword1, booth.keyword2, booth.keyword3]
-                                                                .filter((kw) => kw && kw.trim() !== "")
-                                                                .map((kw, idx) => {
-                                                                    const isLong = kw.length > 3;
-                                                                    return (
-                                                                        <span key={idx}>
-                                                                            {isLong ? (
-                                                                                <Marquee pauseOnHover={true} gradient={false} speed={10}>
-                                                                                    {kw}
-                                                                                </Marquee>
-                                                                            ) : (
-                                                                                kw
-                                                                            )}
-                                                                        </span>
-                                                                    );
-                                                                })}
+                                            <div className="Saved-Booth">
+                                                {savedBoothDetails.map((booth) => (
+                                                    <div className="Saved-Booth-List" key={booth.id}>
+                                                        <img
+                                                            src={booth.logoUrl || BoothLogo}
+                                                            alt="부스로고"
+                                                            className="saved-booth-logo"
+                                                        />
+                                                        <div className="Saved-Booth-Info">
+                                                            <span className="Saved-Booth-name">{booth.name}</span>
+                                                            <p>{booth.description}</p>
+                                                            <div className="Saved-Booth-Keywords">
+                                                                {[booth.keyword1, booth.keyword2, booth.keyword3]
+                                                                    .filter((kw) => kw && kw.trim() !== "")
+                                                                    .map((kw, idx) => {
+                                                                        const isLong = kw.length > 3;
+                                                                        return (
+                                                                            <span key={idx}>
+                                                                                {isLong ? (
+                                                                                    <Marquee pauseOnHover={true} gradient={false} speed={10}>
+                                                                                        {kw}
+                                                                                    </Marquee>
+                                                                                ) : (
+                                                                                    kw
+                                                                                )}
+                                                                            </span>
+                                                                        );
+                                                                    })}
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="Saved-Booth-Icon">
+                                                            <img
+                                                                src={booth.isDeleted ? delbookmark : saved}
+                                                                alt="저장"
+                                                                style={{ cursor: "pointer" }}
+                                                                onClick={() => handleDeleteBookmark(booth.id)}
+                                                            />
+                                                            <span>{booth.bookmarkCount > 99 ? "99+" : booth.bookmarkCount}</span>
                                                         </div>
                                                     </div>
-
-                                                    <div className="Saved-Booth-Icon">
-                                                        <img
-                                                            src={booth.isDeleted ? delbookmark : saved}
-                                                            alt="저장"
-                                                            style={{ cursor: "pointer" }}
-                                                            onClick={() => handleDeleteBookmark(booth.id)}
-                                                        />
-                                                        <span>{booth.bookmarkCount > 99 ? "99+" : booth.bookmarkCount}</span>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                                ))}
+                                            </div>
                                         )}
                                     </>
                                 )}
@@ -263,14 +266,14 @@ export default function MyPage() {
 
                                         <div className='Go-Treasure-img'>
                                             <img src={goTreasure} alt="Treasure-road" className='Treasure-Road' />
-                                            <img 
-                                                src={goChar} 
-                                                alt="charactor" 
-                                                className='Treasure-Char' 
+                                            <img
+                                                src={goChar}
+                                                alt="charactor"
+                                                className='Treasure-Char'
                                                 style={{ transform: `translateX(${charOffset}px)` }}
                                             />
                                             {myStamps.length >= 5 && (
-                                                <button 
+                                                <button
                                                     className="Open-Treasure-Btn"
                                                     onClick={openModal}
                                                 >
@@ -296,7 +299,7 @@ export default function MyPage() {
                             </div>
                         </>
                     )}
-                </div> 
+                </div>
                 <Modal
                     isOpen={isModalOpen}
                     onRequestClose={closeModal}
@@ -306,7 +309,7 @@ export default function MyPage() {
                 >
                     <div className='Treasure-Modal-Top'>
                         <span>찾았다!</span>
-                        <img src={close} alt="모달닫기" className='T-Modal-Close' onClick={closeModal}/>
+                        <img src={close} alt="모달닫기" className='T-Modal-Close' onClick={closeModal} />
                     </div>
 
                     <img src={treasureModal} alt="treasureClock" className='T-Clock-img' />
@@ -320,7 +323,19 @@ export default function MyPage() {
                     </div>
                 </Modal>
             </div>
-            <div className="ResponsiveScreen2">LikeLion</div>
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }

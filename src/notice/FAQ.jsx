@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from '../components/header';
 import '../assets/styles/common.css';
 import './FAQ.css';
+import festaLogo from "/images/festaLogo.png";
 import qna from '/icons/qna.png';
 import qnaOpen from '/icons/qnaOpen.png';
 import qnaClose from '/icons/qnaClose.png';
@@ -48,7 +49,7 @@ export default function FAQ() {
 
     const handleCategoryClick = (idx) => {
         setSelectedCategoryIndex(idx);
-        setOpenQuestionIndex(null); 
+        setOpenQuestionIndex(null);
     };
 
     const toggleQuestion = (idx) => {
@@ -60,8 +61,9 @@ export default function FAQ() {
 
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">PeakTime</div>
-
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id="FAQ" className="MyPageAlways">
                 <Header />
                 <div className="FAQ">
@@ -133,8 +135,19 @@ export default function FAQ() {
                     </div>
                 </div>
             </div>
-
-            <div className="ResponsiveScreen2">LikeLion</div>
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }

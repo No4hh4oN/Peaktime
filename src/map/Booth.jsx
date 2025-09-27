@@ -6,6 +6,7 @@ import Campusmap from '../assets/svg/Campusmap.svg?react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useMemo, useRef } from "react";
 
+import festaLogo from "/images/festaLogo.png";
 import boothIcon from '../assets/svg/booth.svg';
 import photoIcon from '../assets/svg/photo.svg';
 import foodIcon from '../assets/svg/food.svg';
@@ -64,7 +65,7 @@ export default function Booth() {
         { id: 'B17', left: 15.0, top: 44.5, type: 'booth' },
         { id: 'B19', left: 11.5, top: 47.1, type: 'booth' },
         { id: 'B21', left: 8, top: 47.1, type: 'booth' },
-        
+
         // 푸드트럭
         { id: 'D00', left: 18.1, top: 58.1, type: 'food' },
         { id: 'D01', left: 22.1, top: 58.1, type: 'food' },
@@ -73,7 +74,7 @@ export default function Booth() {
         { id: 'D04', left: 24.1, top: 63.1, type: 'food' },
         { id: 'D05', left: 20.1, top: 63.1, type: 'food' },
         { id: 'D06', left: 16.1, top: 63.1, type: 'food' },
-        
+
         // 피크닉존 부스
         { id: 'A00', left: 35.3, top: 32.3, type: 'eat' },
         { id: 'A01', left: 29.3, top: 38.3, type: 'eat' },
@@ -251,7 +252,9 @@ export default function Booth() {
 
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">PeakTime</div>
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id="boothAlways" className="Always">
                 <Header />
                 <div className="Booth-Container">
@@ -379,7 +382,19 @@ export default function Booth() {
                     </div>
                 </BottomSheet>
             </div>
-            <div className="ResponsiveScreen2">LikeLion</div>
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from '../components/header';
 import '../assets/styles/common.css';
 import './Radio.css';
+import festaLogo from "/images/festaLogo.png";
 import noCheck from '/icons/Nocheck.png';
 import check from '/icons/check.png';
 import radio from '/images/radio.png';
@@ -55,7 +56,9 @@ export default function Radio() {
 
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">PeakTime</div>
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id='Radio' className="MyPageAlways">
                 <Header />
                 <div className='Radio'>
@@ -65,7 +68,7 @@ export default function Radio() {
                             <span>사연라디오</span>
                         </div>
 
-                        <div className='Radio-NoName' onClick={toggleAnonymous} style={{cursor: "pointer"}}>
+                        <div className='Radio-NoName' onClick={toggleAnonymous} style={{ cursor: "pointer" }}>
                             <img src={isAnonymous ? check : noCheck} alt="toggle-check" />
                             <div className='Radio-NoName-text'>
                                 <span style={{ color: isAnonymous ? "#4A9BF6" : "#464C52" }}>
@@ -110,7 +113,7 @@ export default function Radio() {
                     contentLabel="사연제출완료 모달"
                 >
                     <div className='Raio-Modal-Top'>
-                        <img src={close} alt="모달닫기" className='Radio-Modal-Close' onClick={closeModal}/>
+                        <img src={close} alt="모달닫기" className='Radio-Modal-Close' onClick={closeModal} />
                     </div>
                     <img src={submit} alt="제출완료" className="Modal-submit-img" />
                     <div className="Modal-submit-text">
@@ -120,7 +123,19 @@ export default function Radio() {
                 </Modal>
             </div>
 
-            <div className="ResponsiveScreen2">LikeLion</div>
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     )
 }
