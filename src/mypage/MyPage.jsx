@@ -216,19 +216,9 @@ export default function MyPage() {
                                                         className="saved-booth-logo"
                                                     />
                                                     <div className="Saved-Booth-Info">
-                                                        <span>{booth.name}</span>
+                                                        <span className="Saved-Booth-name">{booth.name}</span>
                                                         <p>{booth.description}</p>
-                                                        <span>
-                                                            {[booth.keyword1, booth.keyword2, booth.keyword3]
-                                                                .filter((kw) => kw && kw.trim() !== "")
-                                                                .map((kw, idx) => (
-                                                                <div key={idx} className="Booth-KeyWords">
-                                                                    {kw}
-                                                                </div>
-                                                            ))}
-                                                        </span>
-                                                    </div>
-                                                        {/* <div className="Saved-Booth-Keywords">
+                                                        <div className="Saved-Booth-Keywords">
                                                             {[booth.keyword1, booth.keyword2, booth.keyword3]
                                                                 .filter((kw) => kw && kw.trim() !== "")
                                                                 .map((kw, idx) => {
@@ -245,7 +235,9 @@ export default function MyPage() {
                                                                         </span>
                                                                     );
                                                                 })}
-                                                        </div> */}
+                                                        </div>
+                                                    </div>
+
                                                     <div className="Saved-Booth-Icon">
                                                         <img
                                                             src={booth.isDeleted ? delbookmark : saved}
