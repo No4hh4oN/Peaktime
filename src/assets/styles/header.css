@@ -130,3 +130,18 @@
         height: 725px;
     }
 }
+
+
+.LoginStatus{
+    font-family: 'Pretendard-SemiBold';
+    font-weight: 600;
+    font-size: 16px;
+    color: #9FA4A9;
+}
+
+.Header-Login-status{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+}

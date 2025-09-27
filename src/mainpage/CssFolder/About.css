@@ -86,6 +86,7 @@
     text-align: center;
     color: #848484;
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .About-Char-Img{
@@ -220,17 +221,18 @@
 }
 
 .go-syu-homepage button{
-font-family: 'Pretendard-SemiBold';
-font-weight: 600;
-font-size: 14px;
-text-align: center;
-color: #FFFFFF;
-background-color: #FFC47F;
-border: none;
-outline: none;
-width: 177px;
-height: 42px;
-border-radius: 67px;
+    font-family: 'Pretendard-SemiBold';
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #FFC47F;
+    border: none;
+    outline: none;
+    width: 177px;
+    height: 42px;
+    border-radius: 67px;
+    cursor: pointer;
 }
 
 .go-syu-homepage{

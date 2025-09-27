@@ -8,7 +8,7 @@ import Sponsor from "./Sponsor"
 import MainFooter from "./MainFooter"
 import MainImg from "/images/MainImg.png";
 import festaTitle from "/images/festaTitle.png";
-import cross from "/icons/Cross.png";
+import cross3 from "/icons/mainpageCross.png";
 
 export default function Main() {
     return (
@@ -40,7 +40,7 @@ export default function Main() {
                                 삼육대학교 제65대<br />
                                 학생회 시너지
                             </span>
-                            <img src={cross} alt="" />
+                            <img src={cross3} alt="" />
                             <span id='MainLikelion13th'>
                                 멋쟁이사자처럼<br />
                                 삼육대학교 13기

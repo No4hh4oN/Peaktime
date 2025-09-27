@@ -24,7 +24,7 @@ export default function TimeTable(){
         { start: "17:05", end: "17:15", title: "환경디자인원예학과\n치어리딩" },
         { start: "17:15", end: "17:45", title: "SU퍼스타" },
         { start: "17:45", end: "18:05", title: "D.M" },
-        { start: "18:05", end: "18:35", title: "PLAEGUE" },
+        { start: "18:05", end: "18:35", title: "PLAGUE" },
         { start: "18:35", end: "19:00", title: "공식응원단\n유피오리아" },
         { start: "19:00", end: "21:30", title: "천보축전 콘서트", accent: true },
         { start: "21:30", end: "21:35", title: "퇴장 안내" },

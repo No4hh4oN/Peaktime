@@ -1,19 +1,31 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import '../assets/styles/header.css';
 import sidetab from '/icons/sidetab.png';
 import closeSideTab from '/icons/close.png';
 import headerLogo from '/images/festaLogo.png'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from "react-router-dom";
+
+import LogoutModal from './LogoutModal';
 
 export default function Header() {
     const navigator = useNavigate();
-    // 메뉴 오픈 상태 관리
-    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();  
 
-    // 클릭 시 토글 함수
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
+
+    const [isLogoutModalOpen, setLogoutModalOpen] = useState(false);
+
     const toggleMenu = () => {
         setIsOpen(prev => !prev);
-    }
+    };
+
+    // 페이지 이동할 때마다 로그인 여부 다시 확인
+    useEffect(() => {
+        const loginStatus = localStorage.getItem("isLogin");
+        setIsLogin(loginStatus === "true");
+    }, [location]);  
 
     useEffect(() => {
         const always = document.querySelector('.Always');
@@ -34,9 +46,39 @@ export default function Header() {
                     className="SideTabIcon"
                     onClick={toggleMenu}
                 />
-                <img src={headerLogo} alt="festaLogo" className='HeaderLogo' onClick={() => navigator('/MainPage')}/>
+                <div className="HeaderCenter">
+                    <img 
+                        src={headerLogo} 
+                        alt="festaLogo" 
+                        className='HeaderLogo' 
+                        onClick={() => navigator('/MainPage')}
+                    />
+                </div>
+                <div className='Header-Login-status'>
+                    {isLogin ? (
+                        <span 
+                            className="LoginStatus" 
+                            onClick={() => setLogoutModalOpen(true)}
+                        >
+                            로그아웃
+                        </span>
+                    ) : (
+                        <span 
+                            className="LoginStatus" 
+                            onClick={() => navigator('/')}
+                        >
+                            로그인
+                        </span>
+                    )}
+                </div>
+                <LogoutModal 
+                    isOpen={isLogoutModalOpen} 
+                    onClose={() => {
+                        setLogoutModalOpen(false);
+                        setIsLogin(false); // 로그아웃 시 상태 갱신
+                    }} 
+                />
             </div>
-
 
             {isOpen && <div className="overlay" onClick={toggleMenu} />}
             <div className={`MenuBox ${isOpen ? 'active' : ''}`}>

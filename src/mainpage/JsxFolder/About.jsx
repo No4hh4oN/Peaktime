@@ -78,7 +78,9 @@ export default function About(){
                             삼육대학교 중앙 동아리입니다.
                         </div>
                         <div className='go-lion-homepage'>
-                            <button>삼육 멋사 13기 홈페이지</button>
+                            <button onClick={() => window.open('https://syu-likelion.org', '_blank')}>
+                                삼육 멋사 13기 홈페이지
+                            </button>
                             <img src={LionClick} alt="clickimg" />
                         </div>
                     </div>
@@ -103,7 +105,9 @@ export default function About(){
                         
                         <div className='go-syu-homepage'>
                             <img src={SYUClick} alt="clickimg" />
-                            <button>학생회 ‘시너지’ 인스타그램</button>
+                            <button onClick={() => window.open('https://www.instagram.com/student.syu/', '_blank')}>
+                                학생회 ‘시너지’ 인스타그램
+                            </button>
                         </div>
                     </div>
                 </div>
