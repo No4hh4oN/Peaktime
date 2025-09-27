@@ -10,7 +10,7 @@ import LogoutModal from './LogoutModal';
 
 export default function Header() {
     const navigator = useNavigate();
-    const location = useLocation();   // ✅ 꼭 선언해줘야 함!
+    const location = useLocation();  
 
     const [isOpen, setIsOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
@@ -25,7 +25,7 @@ export default function Header() {
     useEffect(() => {
         const loginStatus = localStorage.getItem("isLogin");
         setIsLogin(loginStatus === "true");
-    }, [location]);   // ✅ 이제 react-router location 객체로 동작
+    }, [location]);  
 
     useEffect(() => {
         const always = document.querySelector('.Always');
