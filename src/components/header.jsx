@@ -52,6 +52,7 @@ export default function Header() {
                     </div>
                     <div className='MenuBox-SubMenu'>
                         <span>공지사항</span>
+                        <span onClick={() => navigator('/Notice')}>공지사항</span>
                         <span onClick={() => navigator('/FAQ')}>FAQ</span>
                     </div>
                     <div className='MenuBox-SubMenu'>

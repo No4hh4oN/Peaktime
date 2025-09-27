@@ -82,7 +82,7 @@ export default function Booth() {
         { id: 'A14', left: 31.6, top: 42.8, type: 'situation' },
         { id: 'A15', left: 29.8, top: 42.8, type: 'situation' },
         { id: 'A16', left: 28.0, top: 42.8, type: 'situation' },
-        { id: 'A17', left: 26.2, top: 42.8, type: 'situation' },
+        { id: 'A17', left: 26.2, top: 42.8, type: 'booth' },
     ];
 
     const [activeMarkerId, setActiveMarkerId] = useState(null);

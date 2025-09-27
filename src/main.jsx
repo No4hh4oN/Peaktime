@@ -15,6 +15,8 @@ import LineUp from './mainpage/JsxFolder/LineUp'
 import Radio from './stage/Radio.jsx'
 import FAQ from './notice/FAQ.jsx'
 import MyPage from './mypage/MyPage.jsx'
+import Notice from './notice/Notice.jsx';
+import NoticeDetail from './notice/NoticeDetail.jsx';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -125,6 +127,32 @@ function AnimatedRoutes() {
               <FAQ />
             </motion.div>
           } 
+        />
+        <Route 
+          path="/Notice" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <Notice />
+            </motion.div>
+          } 
+        />
+        <Route
+          path="/Notice/:id"
+          element={
+            <motion.div
+              initial={{ opacity: 0, filter: "blur(15px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(15px)" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <NoticeDetail />
+            </motion.div>
+          }
         />
         <Route 
           path="/MyPage" 
