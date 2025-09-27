@@ -51,3 +51,9 @@ body {
   src: url('../fonts/Pretendard-SemiBold.ttf') format('truetype');
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('../fonts/Pretendard-Bold.ttf') format('truetype');
+  font-style: normal;
+}
