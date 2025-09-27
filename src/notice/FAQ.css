@@ -21,10 +21,10 @@
 .FAQ-Top-text {
     font-family: 'Pretendard-Regular';
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     color: #464C52;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .FAQ-Categories {
@@ -39,13 +39,17 @@
 
 .FAQ-CategoryTab {
     height: 34px;
-    padding: 0 10px;
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    padding: 0 13px;
     border-radius: 100px;
     border: 1px solid #E9EBED;
     background-color: #ffffff;
     color: #9FA4A9;
     outline: none;
     cursor: pointer;
+    font-size: 14px;
+
 }
 
 .FAQ-CategoryTab.is-selected {

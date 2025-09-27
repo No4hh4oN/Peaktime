@@ -54,11 +54,19 @@
     gap: 27px;
     align-items: center;
     height: 1066px;
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
 }
 
 .lu-item {
     position: relative;  
     width: 214px;     
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
 }
 
 .lineupImg {
