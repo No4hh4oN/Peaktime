@@ -22,13 +22,13 @@ export default function LoginModal({ isOpen, onRequestClose }) {
     // 로그인
     const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("보내는 데이터:", loginForm);
+        
         try {
             const res = await login(loginForm);
             localStorage.setItem("accessToken", res.token);
             localStorage.setItem("userRole", res.role);
             setLoginForm((f) => ({ identifier: "", password: "" }));
-            alert("로그인 성공!");
+            
             onRequestClose();
             navigator('/MainPage');
         } catch (err) {

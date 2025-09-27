@@ -2,6 +2,7 @@ import Header from '../../components/header';
 import '../../assets/styles/common.css';
 import "../CssFolder/LineUp.css";
 import Footer from '/src/components/footer.jsx';
+import festaLogo from "/images/festaLogo.png";
 import close2 from "/icons/close2.png";
 import sparkle3 from "/images/sparkle3.png";
 import sparkle4 from "/images/sparkle4.png";
@@ -23,14 +24,16 @@ export default function LineUp() {
         { img: lineup1, name: "청하" },
         { img: lineup2, name: "에이핑크" },
         { img: lineup3, name: "빅나티" },
-        { img: lineup4, name: "우디고차일드" },  
+        { img: lineup4, name: "우디고차일드" },
         { img: lineup5, name: "DJ Poy & Loki" },
         { img: lineup6, name: "MC 섭이" },
     ];
 
     return (
         <div className="ViewBox">
-            <div className="ResponsiveScreen1">PeakTime</div>
+            <div className="ResponsiveScreen1">
+                <img src={festaLogo} alt="" />
+            </div>
             <div id="LineUp" className="Always">
                 <Header />
                 <div className="LineUp">
@@ -42,7 +45,7 @@ export default function LineUp() {
                         </div>
                         <hr style={{ border: "none", height: "4px", backgroundColor: "#243F73", margin: 0 }} />
 
-                        <img src={sparkle4} alt="sparkle4" className='LUsparkle4' />    
+                        <img src={sparkle4} alt="sparkle4" className='LUsparkle4' />
 
                         <ul className="lu-list">
                             {lineups.map((it, i) => (
@@ -56,13 +59,25 @@ export default function LineUp() {
                         <img src={sparkle5} alt="sparkle5" className='LUsparkle5' />
                         <div className='LUCharactor-Box'>
                             <img src={char2} alt="charactor2" className='LUchar2' />
-                            <img src={char1} alt="charactor1" className='LUchar1'/>
+                            <img src={char1} alt="charactor1" className='LUchar1' />
                         </div>
                     </div>
-                <Footer />
+                    <Footer />
                 </div>
             </div>
-            <div className="ResponsiveScreen2">LikeLion</div>
+            <div className="ResponsiveScreen2">
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
+            </div>
         </div>
     );
 }

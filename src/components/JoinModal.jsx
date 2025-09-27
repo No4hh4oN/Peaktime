@@ -153,7 +153,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                 department: "",
             });
 
-            alert("회원가입 성공!");
+            // alert("회원가입 성공!");
             onRequestClose();
             navigator('/MainPage');
         } catch (err) {

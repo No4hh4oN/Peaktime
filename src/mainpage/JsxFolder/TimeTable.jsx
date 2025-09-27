@@ -2,6 +2,7 @@ import Header from '../../components/header';
 import '../../assets/styles/common.css';
 import "../CssFolder/TimeTable.css"
 import close2 from "/icons/close2.png";
+import festaLogo from "/images/festaLogo.png";
 import festaTitle from "/images/festaTitle.png";
 import sparkle3 from "/images/sparkle3.png";
 import sparkle4 from "/images/sparkle4.png";
@@ -10,11 +11,7 @@ import char1 from "/images/charactor1.png";
 import char2 from "/images/charactor2.png";
 import Footer from '/src/components/footer.jsx'
 
-
-
-export default function TimeTable(){
-
-
+export default function TimeTable() {
     const List = [
         { start: "15:00", end: "15:20", title: "개회식" },
         { start: "15:20", end: "15:50", title: "클래시아" },
@@ -33,7 +30,7 @@ export default function TimeTable(){
     return (
         <div className="ViewBox">
             <div className="ResponsiveScreen1">
-                PeakTime
+                <img src={festaLogo} alt="" />
             </div>
             <div id='TimeTable' className="Always">
                 <Header />
@@ -49,14 +46,14 @@ export default function TimeTable(){
                         <div className='TimeTable-List'>
                             <ul className="tt-list">
                                 {List.map((s, i) => (
-                                <li key={`${s.start}-${i}`} className="tt-row">
-                                    <span className="tt-time">
-                                        {s.start} - {s.end}
-                                    </span>
-                                    <span className={`tt-title ${s.accent ? "accent" : ""}`}>
-                                        {s.title}
-                                    </span>
-                                </li>
+                                    <li key={`${s.start}-${i}`} className="tt-row">
+                                        <span className="tt-time">
+                                            {s.start} - {s.end}
+                                        </span>
+                                        <span className={`tt-title ${s.accent ? "accent" : ""}`}>
+                                            {s.title}
+                                        </span>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
@@ -64,15 +61,25 @@ export default function TimeTable(){
                         <img src={sparkle5} alt="sparkle5" className='sparkle5' />
                         <div className='TimeCharactor-Box'>
                             <img src={char2} alt="charactor2" className='char2' />
-                            <img src={char1} alt="charactor1" className='char1'/>
+                            <img src={char1} alt="charactor1" className='char1' />
                         </div>
 
                     </div>
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
             <div className="ResponsiveScreen2">
-                LikeLion
+                <div className='ResponsiveScreen2-div'>
+                    <span id=''>
+                        20<br />
+                        25
+                    </span>
+                    <span>
+                        SAHMYOOK<br />
+                        UNIVERSITY<br />
+                        FESTIVAL
+                    </span>
+                </div>
             </div>
         </div>
     )

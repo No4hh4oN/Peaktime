@@ -42,14 +42,12 @@ export default function Radio() {
             };
 
             const response = await AxiosClient.post("/stories", data, { auth: true });
-            console.log("사연 제출 성공:", response);
-
+            
             setTitle("");
             setIsModalOpen(true);
             setContent("");
             setIsAnonymous(false);
         } catch (error) {
-            console.error("사연 제출 실패:", error);
             alert("사연 제출에 실패했습니다. 다시 시도해주세요.");
         }
     };
