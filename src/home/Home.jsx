@@ -7,11 +7,15 @@ import './Home.css';
 import festaTitle from "/images/festaTitle.png";
 import festaLogo from "/images/festaLogo.png";
 import cross from "/icons/Cross.png";
+import RePassModal from "./RePassModal";
 
 export default function Home() {
     const navigator = useNavigate();
     const [isLoginOpen, setLoginOpen] = useState(false);
     const [isJoinOpen, setJoinOpen] = useState(false);
+
+    const [isRePassModalOpen, setIsRePassModalOpen] = useState(false);
+
 
     return (
         <div className="ViewBox">
@@ -59,6 +63,16 @@ export default function Home() {
                         >
                             비회원 입장하기
                         </button>
+                        <div className='go-repass-modal'
+                            id="reissue-pass"
+                            onClick={() => setIsRePassModalOpen(true)}
+                        >
+                            임시 비밀번호 발급
+                        </div>
+                        <RePassModal 
+                            isOpen={isRePassModalOpen} 
+                            onRequestClose={() => setIsRePassModalOpen(false)} 
+                        />
                     </div>
                     <img id='festaLogo' src={festaLogo} alt="PeakTime" />
                 </div>

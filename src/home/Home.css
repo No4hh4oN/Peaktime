@@ -84,3 +84,11 @@
 #festaLogo {
     margin-top: 67px;
 }
+
+.go-repass-modal{
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-size: 14px;
+    color: #9FA4A9;
+    margin-left: 53px;
+}
