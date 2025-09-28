@@ -106,6 +106,7 @@
     color:#8DAAE3;
     letter-spacing: 1.2px;
     text-align: center;
+    z-index: 1000;
 }
 
 .MainPage_Co img{
