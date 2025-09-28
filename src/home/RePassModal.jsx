@@ -35,7 +35,7 @@ export default function RePassModal({ isOpen, onRequestClose }) {
                 onRequestClose();
             }, 4000);
         } catch (err) {
-            console.error(err);
+            // console.error(err);
             setLoading(false);
             alert("발급에 실패했습니다. 입력 정보를 확인해주세요.");
         }
