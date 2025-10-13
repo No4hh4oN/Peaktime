@@ -35,7 +35,7 @@ export default function Notice() {
         if (urgentNotices.length === 0) return;
         const interval = setInterval(() => {
             setUrgentIndex((prev) => (prev + 1) % urgentNotices.length);
-        }, 5000); // 3초마다 교체
+        }, 5000); 
         return () => clearInterval(interval);
     }, [urgentNotices]);
 

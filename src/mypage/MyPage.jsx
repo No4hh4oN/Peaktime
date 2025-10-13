@@ -148,7 +148,6 @@ export default function MyPage() {
         fetchAll();
     }, []);
 
-    // 탭 변경 시
     useEffect(() => {
         if (activeTab === "booth") {
             fetchBooths();

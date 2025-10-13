@@ -75,7 +75,7 @@ export default function Header() {
                     isOpen={isLogoutModalOpen} 
                     onClose={() => {
                         setLogoutModalOpen(false);
-                        setIsLogin(false); // 로그아웃 시 상태 갱신
+                        setIsLogin(false); 
                     }} 
                 />
             </div>

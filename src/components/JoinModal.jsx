@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-unused-vars */
 // components/JoinModal.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
