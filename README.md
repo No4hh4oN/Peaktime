@@ -21,8 +21,8 @@
 
 <div align="center">
 
-| [장준익](https://github.com/No4hh4oN) — Frontend | [심희영](https://github.com/heeyoung00) — Frontend | [구교승](https://github.com/GyoseungKu) — Backend | 임나현 — Design |
-| :-------------------------------------------: | :---------------------------------------------: | :--------------------------------------------: | :----------: |
+| <img src="https://avatars.githubusercontent.com/No4hh4oN" width="80" height="80" style="border-radius:50%"/><br/>[장준익](https://github.com/No4hh4oN)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/heeyoung00" width="80" height="80" style="border-radius:50%"/><br/>[심희영](https://github.com/heeyoung00)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/GyoseungKu" width="80" height="80" style="border-radius:50%"/><br/>[구교승](https://github.com/GyoseungKu)<br/><sub>Backend</sub> | <img src="https://placehold.co/80x80?text=NH" width="80" height="80" style="border-radius:50%"/><br/>임나현<br/><sub>Design</sub> |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
 
 </div>
 
@@ -45,12 +45,12 @@
 
 ## 기술 스택
 
-| 구분           | 사용 기술                                                                                                                                                                                                                                                                                                                                                                               |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Frontend** | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="24" height="24"/> React    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="24" height="24"/> JavaScript    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" width="24" height="24"/> Vite |
-| **Backend**  | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="24" height="24"/> Spring Boot    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="24" height="24"/> MySQL                                                                                                                              |
-| **Design**   | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="24" height="24"/> Figma                                                                                                                                                                                                                                                               |
-| **Deploy**   | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="24" height="24"/> Vercel                                                                                                                                                                                                                                                            |
+| 구분           | 사용 기술                                                                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frontend** | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40" height="40"/> React    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/> JavaScript |
+| **Backend**  | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" width="40" height="40"/> Spring Boot    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="40" height="40"/> MySQL        |
+| **Design**   | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40" height="40"/> Figma                                                                                                                                         |
+| **Deploy**   | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" width="40" height="40"/> Vercel                                                                                                                                      |
 
 ---
 
@@ -107,9 +107,3 @@ FESTA2025/
 ## 시연 영상
 
 [YouTube 보기](https://www.youtube.com/watch?v=UCfE8hISmPw)
-
----
-
-## 허락사항
-
-본 프로젝트의 이미지 및 디자인은 자가 구성 자산으로, 비상업적 공개 서비스입니다.
