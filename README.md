@@ -1,5 +1,9 @@
 # 2025 PEAK;TIME — 삼육대학교 천보축전 웹서비스
 
+<div align="center">
+  <img src="/images/insta.png" width="600" alt="축제 홍보 인스타 이미지" />
+</div>
+
 > 삼육대학교 2025 천보축전 공식 웹페이지<br/>
 > React 기반 반응형 PC·모바일 웹서비스입니다.
 
