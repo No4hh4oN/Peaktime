@@ -16,7 +16,13 @@ export default function LoginModal({ isOpen, onRequestClose }) {
     const [loginForm, setLoginForm] = useState({ identifier: "", password: "" });
 
     const handleChange = (e) => {
-        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        if (name === "identifier") {
+            setLoginForm({ ...loginForm, [name]: value.toLowerCase() });
+        } else {
+            setLoginForm({ ...loginForm, [name]: value });
+        }
     };
 
     // 로그인
@@ -27,6 +33,7 @@ export default function LoginModal({ isOpen, onRequestClose }) {
             const res = await login(loginForm);
             localStorage.setItem("accessToken", res.token);
             localStorage.setItem("userRole", res.role);
+            localStorage.setItem("isLogin", true);
             setLoginForm((f) => ({ identifier: "", password: "" }));
             
             onRequestClose();

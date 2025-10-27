@@ -1,5 +1,5 @@
 // components/JoinModal.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { login } from "../api/auth";
 import {
@@ -22,6 +22,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     const [errorMessage, setErrorMessage] = useState("");
     const openError = (msg) => setErrorMessage(msg);
     const closeError = () => setErrorMessage("");
+
     const [form, setForm] = useState({
         userId: "",
         email: "",
@@ -33,16 +34,39 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     });
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        if (name === "userId") {
+            // 아이디는 소문자 변환
+            setForm({ ...form, [name]: value.toLowerCase() });
+        }
+        else if (name === "studentId") {
+            // 학번은 모든 공백 제거
+            setForm({ ...form, [name]: value.replace(/\s+/g, "") });
+        }
+        else {
+            setForm({ ...form, [name]: value });
+        }
     };
 
+    // refs
+    const userIdRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const confirmPasswordRef = useRef();
+    const nameRef = useRef();
+    const studentIdRef = useRef();
+    const departmentRef = useRef();
+
+    // 로딩 상태
+    const [isLoading, setIsLoading] = useState(false);
 
     // id 체크
     const [isCheckId, setCheckId] = useState(null);
     const handleCheckId = async () => {
+        if (!form.userId) return openError("아이디를 입력해주세요.");
         try {
             const res = await checkId(form.userId);
-
             if (res.duplicated) {
                 openError("중복된 아이디입니다.");
                 setCheckId(false);
@@ -58,9 +82,9 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     // email 체크
     const [isCheckEmail, setCheckEmail] = useState(null);
     const handleCheckEmail = async () => {
+        if (!form.email) return openError("이메일을 입력해주세요.");
         try {
             const res = await checkEmail(form.email);
-
             if (res.duplicated) {
                 openError("사용 중인 이메일입니다.");
                 setCheckEmail(false);
@@ -73,21 +97,22 @@ export default function JoinModal({ isOpen, onRequestClose }) {
         }
     };
 
-
     // 학번 체크
     const [isCheckStudentId, setCheckStudentId] = useState(null);
     const handleCheckStudentId = async () => {
+        if (!form.studentId) return openError("학번을 입력해주세요.");
         try {
             const res = await checkStudentId(form.studentId);
             if (res.duplicated) {
                 openError(res.message);
-                setCheckStudentId(false);
-                setForm((f) => ({ ...f, email: "" }));
+                setCheckStudentId(true);
+                setForm((f) => ({ ...f, studentId: "" }));
             } else {
                 setCheckStudentId(true);
             }
         } catch (e) {
             openError("학번 중복 확인 실패");
+            setCheckStudentId(false);
         }
     };
 
@@ -95,13 +120,11 @@ export default function JoinModal({ isOpen, onRequestClose }) {
     const [passwordMessage, setPasswordMessage] = useState(null);
     const [confirmMessage, setConfirmMessage] = useState(null);
 
-    // 비밀번호 형식 체크 (영문, 숫자, 기호 4~20자)
     const validatePassword = (password) => {
         const regex = /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{4,20}$/;
         return regex.test(password);
     };
 
-    // 실시간 비밀번호 형식 체크
     useEffect(() => {
         if (!form.password) {
             setPasswordMessage(null);
@@ -112,7 +135,6 @@ export default function JoinModal({ isOpen, onRequestClose }) {
         }
     }, [form.password]);
 
-    // 비밀번호 확인
     useEffect(() => {
         if (!form.confirmPassword) {
             setConfirmMessage(null);
@@ -123,10 +145,51 @@ export default function JoinModal({ isOpen, onRequestClose }) {
         }
     }, [form.confirmPassword, form.password]);
 
+    // 학과 선택
+    const departments = [
+        "신학과", "간호학과", "약학과", "경영학과", "글로벌한국학과",
+        "영어영문학과", "상담심리학과", "유아교육과", "항공관광외국어학부", "사회복지학과",
+        "음악학과", "아트앤디자인학과", "체육학과", "자유전공학부", "물리치료학과",
+        "보건관리학과", "식품영양학과", "동물자원과학과", "바이오융합공학과", "화학생명과학과",
+        "환경디자인원예학과", "인공지능융합학부", "컴퓨터공학부", "건축학과(5년제)",
+        "건축학과(4년제)", "데이터클라우드공학과"
+    ];
+    const [isDeptOpen, setDeptOpen] = useState(false);
+
     // 회원가입
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const { userId, email, password, confirmPassword, name, studentId, department } = form;
+
+        // 널값 체크 및 첫번째 비어있는 input 포커스
+        if (!userId || !email || !password || !confirmPassword || !name || !studentId || !department) {
+            openError("모든 항목을 입력해주세요.");
+
+            if (!department) {
+                departmentRef.current.readOnly = false;
+                departmentRef.current.focus();
+                setDeptOpen(true);
+            }
+            else if (!studentId) studentIdRef.current.focus();
+            else if (!email) emailRef.current.focus();
+            else if (!name) nameRef.current.focus();
+            else if (!userId) userIdRef.current.focus();
+            else if (!password) passwordRef.current.focus();
+            else if (!confirmPassword) confirmPasswordRef.current.focus();
+            return;
+        }
+
+        if (!isCheckId || !isCheckEmail || !isCheckStudentId) {
+            return openError("중복 확인을 해주세요.");
+        }
+
+        if (!passwordMessage || !confirmMessage) {
+            return openError("비밀번호 조건을 확인해주세요.");
+        }
+
         try {
+            setIsLoading(true);
             const { confirmPassword, ...submitForm } = form;
 
             const res = await joinUser({
@@ -135,13 +198,14 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                 createdAt: new Date().toISOString(),
             });
 
-            // 회원가입시 자동으로 로그인되도록 로그인 로직 재호출
             const loginRes = await login({
                 identifier: form.userId,
                 password: form.password,
             });
+
             localStorage.setItem("accessToken", loginRes.token);
             localStorage.setItem("userRole", loginRes.role);
+            localStorage.setItem("isLogin", true);
 
             setForm({
                 userId: "",
@@ -153,25 +217,14 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                 department: "",
             });
 
-            // alert("회원가입 성공!");
+            setIsLoading(false);
             onRequestClose();
             navigator('/MainPage');
         } catch (err) {
+            setIsLoading(false);
             openError("회원가입 중 오류 발생");
         }
     };
-
-    // 학과선택 토글
-    // 학과 리스트
-    const departments = [
-        "신학과", "간호학과", "약학과", "경영학과", "글로벌한국학과",
-        "영어영문학과", "상담심리학과", "유아교육과", "항공관광외국어학부", "사회복지학과",
-        "음악학과", "아트앤디자인학과", "체육학과", "자유전공학부", "물리치료학과",
-        "보건관리학과", "식품영양학과", "동물자원과학과", "바이오융합공학과", "화학생명과학과",
-        "환경디자인원예학과", "인공지능융합학부", "컴퓨터공학부", "건축학과(5년제)",
-        "건축학과(4년제)", "데이터클라우드공학과"
-    ];
-    const [isDeptOpen, setDeptOpen] = useState(false);
 
     return (
         <Modal
@@ -180,6 +233,11 @@ export default function JoinModal({ isOpen, onRequestClose }) {
             className="modal-content"
             overlayClassName="modal-overlay"
         >
+            {isLoading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <img id="mini" src={festaTitle} alt="festaTitle" />
             <p className="joinP">
                 지금 가입하고 천보축전의<br />
@@ -188,6 +246,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
             <form id="joinForm" className="joinForm" onSubmit={handleSubmit}>
                 <div className={`input-with-btn ${isDeptOpen ? "open" : ""}`}>
                     <input
+                        ref={departmentRef}
                         className={`joinInput ${isDeptOpen ? "open" : ""}`}
                         name="department"
                         value={form.department}
@@ -222,6 +281,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
 
                 <div className="input-with-btn">
                     <input
+                        ref={studentIdRef}
                         className="joinInput"
                         name="studentId"
                         value={form.studentId}
@@ -239,6 +299,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
 
                 <div id="emailInput" className="input-with-btn">
                     <input
+                        ref={emailRef}
                         className="joinInput"
                         name="email"
                         value={form.email}
@@ -256,6 +317,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
 
                 <div className="input-with-btn">
                     <input
+                        ref={nameRef}
                         className="joinInput"
                         name="name"
                         value={form.name}
@@ -266,6 +328,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
 
                 <div className="input-with-btn">
                     <input
+                        ref={userIdRef}
                         className="joinInput"
                         name="userId"
                         value={form.userId}
@@ -282,9 +345,9 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                     )}
                 </div>
 
-
                 <div id="pwInput" className="input-with-btn">
                     <input
+                        ref={passwordRef}
                         className="joinInput"
                         name="password"
                         type="password"
@@ -301,6 +364,7 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                 </div>
                 <div className="input-with-btn">
                     <input
+                        ref={confirmPasswordRef}
                         className="joinInput"
                         name="confirmPassword"
                         type="password"
@@ -315,8 +379,8 @@ export default function JoinModal({ isOpen, onRequestClose }) {
                         <span id="error" className="systemMessage">*비밀번호가 일치하지 않습니다.</span>
                     )}
                 </div>
-
             </form>
+
             <p id="privacyInfo">
                 축제가 종료된 후, <br />
                 수집된 모든 개인정보는 안전하게 폐기됩니다.

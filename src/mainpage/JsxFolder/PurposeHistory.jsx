@@ -16,7 +16,7 @@ export default function PurposeHistory(){
                 </div>
                 <div className='Purpose-Contents'>
                     천보축전 <span>‘PEAK;TIME’</span>은 각자가 쌓아 온 시간의<br />
-                    정점(PEAK)를 서로의 응원과 참여로 함께 완성하는<br />
+                    정점(PEAK)을 서로의 응원과 참여로 함께 완성하는<br />
                     시간을 의미합니다.
                     <br />
                     <br />
