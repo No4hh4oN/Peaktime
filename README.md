@@ -1,7 +1,7 @@
 # 2025 PEAK;TIME — 삼육대학교 천보축전 웹서비스
 
 <div align="center">
-  <img src="/images/insta.png" width="600" alt="축제 홍보 인스타 이미지" />
+  <img src="/images/Insta.png" width="600" alt="축제 홍보 인스타 이미지" />
 </div>
 
 > 삼육대학교 2025 천보축전 공식 웹페이지<br/>
