@@ -1,11 +1,9 @@
 # 2025 PEAK;TIME — 삼육대학교 천보축전 웹서비스
 
-<div align="center">
-  <img src="/public/images/Insta.png" width="600" alt="축제 홍보 인스타 이미지" />
-  
+<img src="/public/images/Insta.png" width="600" alt="축제 홍보 인스타 이미지" />
+
 > 삼육대학교 2025 천보축전 공식 웹페이지<br/>
 > React 기반 반응형 PC·모바일 웹서비스입니다.
-</div>
 
 
 ---
@@ -76,7 +74,7 @@
   home, map, notice, stage, mypage 등 단위별 라우팅 구성
 
 * **로딩 인터랙션**
-  공연·라디오 섹션 로딩 시 애니메이션 효과 구현
+  로딩 시 애니메이션 효과 구현
 
 ---
 
