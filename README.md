@@ -85,10 +85,10 @@ FESTA2025/
 ├── peaktime/
 │   ├── .vercel/
 │   ├── node_modules/
-│   ├── public/
+│   ├── public/                # 이미지, 아이콘
 │   └── src/
 │       ├── api/               # Axios 인스턴스 및 API 모듈
-│       ├── assets/            # 이미지, SVG, 정적 파일
+│       ├── assets/            # style, fonts, SVG
 │       ├── components/        # 공통 컴포넌트
 │       ├── home/              # 홈 페이지
 │       ├── mainpage/          # 메인/타임테이블
