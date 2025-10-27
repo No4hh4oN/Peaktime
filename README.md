@@ -105,11 +105,11 @@ FESTA2025/
 └── README.md
 ```
 
----
+<!-- ---
 
 ## 시연 영상
 
-[YouTube 보기](https://www.youtube.com/watch?v=UCfE8hISmPw)
+[YouTube 보기](https://www.youtube.com/watch?v=UCfE8hISmPw) -->
 
 ---
 
