@@ -2,10 +2,11 @@
 
 <div align="center">
   <img src="/public/images/Insta.png" width="600" alt="축제 홍보 인스타 이미지" />
-</div>
-
+  
 > 삼육대학교 2025 천보축전 공식 웹페이지<br/>
 > React 기반 반응형 PC·모바일 웹서비스입니다.
+</div>
+
 
 ---
 
@@ -25,7 +26,7 @@
 
 <div align="center">
 
-| <img src="https://avatars.githubusercontent.com/No4hh4oN" width="80" height="80" style="border-radius:50%"/><br/>[장준익](https://github.com/No4hh4oN)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/heeyoung00" width="80" height="80" style="border-radius:50%"/><br/>[심희영](https://github.com/heeyoung00)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/GyoseungKu" width="80" height="80" style="border-radius:50%"/><br/>[구교승](https://github.com/GyoseungKu)<br/><sub>Backend</sub> | <img src="https://placehold.co/80x80?text=NH" width="80" height="80" style="border-radius:50%"/><br/>임나현<br/><sub>Design</sub> |
+| <img src="https://avatars.githubusercontent.com/No4hh4oN" width="200" height="200" style="border-radius:50%"/><br/>[장준익](https://github.com/No4hh4oN)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/heeyoung00" width="200" height="200" style="border-radius:50%"/><br/>[심희영](https://github.com/heeyoung00)<br/><sub>Frontend</sub> | <img src="https://avatars.githubusercontent.com/GyoseungKu" width="200" height="200" style="border-radius:50%"/><br/>[구교승](https://github.com/GyoseungKu)<br/><sub>Backend</sub> | <img src="https://placehold.co/80x80?text=NH" width="200" height="200" style="border-radius:50%"/><br/>임나현<br/><sub>Design</sub> |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
 
 </div>
