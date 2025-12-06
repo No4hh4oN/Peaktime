@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Modal from "react-modal";
-import AxiosClient from "../AxiosClinet";
 import "./RePassModal.css";
 import close from "/icons/close.png";
 import festaTitle from "/images/festaTitle.png";
+
+// API 함수 불러오기
+import { resetPassword } from "../api/user";
 
 Modal.setAppElement("#root");
 
@@ -25,23 +27,18 @@ export default function RePassModal({ isOpen, onRequestClose }) {
         setLoading(true);
 
         try {
-            // API 요청 먼저 실행
-            await AxiosClient.post("/users/reset-password", form);
+            await resetPassword(form);
 
-            // 4초 동안 로딩 유지
             setTimeout(() => {
                 setLoading(false);
                 alert("임시 비밀번호가 발급되었습니다. 메일을 확인하세요!");
                 onRequestClose();
             }, 4000);
         } catch (err) {
-            // console.error(err);
             setLoading(false);
             alert("발급에 실패했습니다. 입력 정보를 확인해주세요.");
         }
     };
-
-
 
     return (
         <Modal

@@ -12,7 +12,7 @@ import AxiosClient from "../AxiosClinet";
 import Modal from "react-modal";
 import close from '/icons/close.png';
 
-
+import { postStory } from "../api/radio";
 Modal.setAppElement("#root");
 
 
@@ -41,7 +41,7 @@ export default function Radio() {
                 content: content,
             };
 
-            const response = await AxiosClient.post("/stories", data, { auth: true });
+            await postStory(data);
             
             setTitle("");
             setIsModalOpen(true);

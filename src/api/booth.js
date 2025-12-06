@@ -48,3 +48,13 @@ export async function cancelBookmark(boothId) {
     auth: true,
   });
 }
+
+// 내 북마크 목록 조회 (ID 목록)
+export async function getMyBookmarks() {
+  return AxiosClient.get("/booth-bookmarks/my", { auth: true });
+}
+
+// 내 스탬프 목록 조회
+export async function getMyStamps() {
+  return AxiosClient.get("/booth-stamps/my", { auth: true });
+}

@@ -5,6 +5,9 @@ import Header from '../components/header';
 import '../assets/styles/common.css';
 import "../mypage/MyPage.css";
 import Modal from "react-modal";
+import Marquee from "react-fast-marquee";
+
+// 이미지 및 아이콘 import
 import festaLogo from "/images/festaLogo.png";
 import profileimg from '/images/profileEX.png';
 import goTreasure from '/images/GoTreasure.png';
@@ -16,8 +19,20 @@ import close from '/icons/close.png';
 import saved from '/icons/saved.png';
 import delbookmark from '/icons/delbookmark.png';
 import BoothLogo from '/images/BoothLogo.png';
-import AxiosClient from "../AxiosClinet";
-import Marquee from "react-fast-marquee";
+
+// API 함수들 불러오기 
+import { 
+    getAllBooths, 
+    getBoothById, 
+    getImageById, 
+    getBookmarkCountByBooth, 
+    cancelBookmark,
+    getMyBookmarks, 
+    getMyStamps,    
+} from "../api/booth";
+
+import {userMe} from "../api/user";
+
 Modal.setAppElement("#root");
 
 export default function MyPage() {
@@ -34,7 +49,7 @@ export default function MyPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [savedBoothIds, setSavedBoothIds] = useState([]);
     const [savedBoothDetails, setSavedBoothDetails] = useState([]);
-    const [loading, setLoading] = useState(true); // 로딩 상태
+    const [loading, setLoading] = useState(true);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -42,12 +57,12 @@ export default function MyPage() {
     // 북마크 부스 목록
     const fetchSavedBooths = async () => {
         try {
-            const response = await AxiosClient.get("/booth-bookmarks/my", { auth: true });
+            const response = await getMyBookmarks();
             setSavedBoothIds(response || []);
 
             const detailResponses = await Promise.all(
                 (response || []).map((item) =>
-                    AxiosClient.get(`/booths/${item.boothId}`, { auth: true })
+                    getBoothById(item.boothId)
                 )
             );
 
@@ -58,7 +73,7 @@ export default function MyPage() {
 
                     if (booth.imageId) {
                         try {
-                            const imgRes = await AxiosClient.get(`/images/${booth.imageId}`, { auth: true });
+                            const imgRes = await getImageById(booth.imageId);
                             imageUrl = imgRes.url;
                         } catch (e) {
                             console.error("이미지 불러오기 실패:", e);
@@ -66,7 +81,7 @@ export default function MyPage() {
                     }
 
                     try {
-                        const countRes = await AxiosClient.get(`/booth-bookmarks/count/${booth.id}`, { auth: true });
+                        const countRes = await getBookmarkCountByBooth(booth.id);
                         bookmarkCount = countRes ?? 0;
                     } catch (e) {
                         console.error("북마크 수 불러오기 실패:", e);
@@ -84,7 +99,7 @@ export default function MyPage() {
     // 북마크 삭제
     const handleDeleteBookmark = async (boothId) => {
         try {
-            await AxiosClient.delete(`/booth-bookmarks/${boothId}`, { auth: true });
+            await cancelBookmark(boothId);
             setSavedBoothDetails((prev) => prev.filter((booth) => booth.id !== boothId));
         } catch (err) {
             console.error("북마크 삭제 실패:", err);
@@ -104,7 +119,7 @@ export default function MyPage() {
     // 부스 목록
     const fetchBooths = async () => {
         try {
-            const data = await AxiosClient.get("/booths");
+            const data = await getAllBooths();
             const stampedBooths = data.filter((booth) => booth.stamp === true);
             setAllBooths(stampedBooths);
         } catch (err) {
@@ -115,7 +130,7 @@ export default function MyPage() {
     // 내 스탬프
     const fetchMyStamps = async () => {
         try {
-            const data = await AxiosClient.get("/booth-stamps/my", { auth: true });
+            const data = await getMyStamps();
             setMyStamps(data);
         } catch (err) {
             console.error("스탬프 조회 실패:", err);
@@ -123,9 +138,9 @@ export default function MyPage() {
     };
 
     // 내 정보
-    const fetchUserInfo = async () => {
+    const fetchUserInfoData = async () => {
         try {
-            const data = await AxiosClient.get("/users/me", { auth: true });
+            const data = await userMe();
             setUserName(data.name);
             setDepartment(data.department);
         } catch (err) {
@@ -138,7 +153,7 @@ export default function MyPage() {
         const fetchAll = async () => {
             try {
                 await Promise.all([
-                    fetchUserInfo(),
+                    fetchUserInfoData(),
                     fetchSavedBooths()
                 ]);
             } finally {
